@@ -1,0 +1,28 @@
+{
+  "name": "namcol_frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Militaseeee/namCol_frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Militaseeee/namCol_frontend/issues"
+  },
+  "homepage": "https://github.com/Militaseeee/namCol_frontend#readme",
+  "devDependencies": {
+    "vite": "^7.1.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  }
+}

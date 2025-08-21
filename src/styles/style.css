@@ -1,0 +1,205 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* ---------------- NAVBAR ---------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 3rem;
+  background-color: #FFC042; /* Amarillo de la landing */
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+}
+.nav-button{
+    display: flex;
+    width: 20%;
+    height: 4.5vh;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    margin-left: 1.5rem;
+    
+}
+.navbar nav {
+    display: flex;
+    width: 30%;
+}
+.navbar nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.navbar nav a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 4rem 3rem;
+  background-color: #FFC042; /* Amarillo */
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #000;
+}
+#black-logo{
+    width: 35vw;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 25px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 350px;
+}
+
+.search-box input {
+  border: none;
+  padding: 0.8rem 1rem;
+  flex: 1;
+  outline: none;
+}
+
+.search-box button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+}
+
+.hero-img img {
+  max-width: 500px;
+  height: auto;
+}
+
+/* ---------------- FEATURED RECIPES ---------------- */
+.recipes {
+  padding: 3rem;
+  text-align: center;
+}
+
+.recipes h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.recipe-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 250px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card p {
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.btn-more {
+  background: #ffb733;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-more:hover {
+  background: #e6a82f;
+}
+
+/* ---------------- FOOTER ---------------- */
+.footer {
+  background-color: #FFC042;
+  border-top: 1px solid #ddd;
+  padding: 4.5rem 3rem;
+  margin-top: 3rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer p {
+  font-size: 0.9rem;
+  color: #555;
+}
+.footer-nav{
+    display: flex;
+}
+.footer-nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.footer-nav a:hover {
+  color: #ff9800;
+}
+.footer-logos-container{
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+}
+.footer-logos{
+    width: 6vh;
+    height: 4vh;
+    margin-top: 1%;
+    margin-left: 2%;
+}

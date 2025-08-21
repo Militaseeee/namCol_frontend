@@ -1,3 +1,5 @@
+<img src="src/assets/logo%20ñamcol%20largo%20black%201.png" alt="NamCol Logo" width="150"/>
+
 # namCol_frontend
 
 This repository contains the development of the frontend for an interactive web application designed to promote Colombian gastronomy. The platform allows both national and international users to discover, learn, and prepare traditional Colombian recipes through a step-by-step guided experience, from selecting ingredients to the final preparation.
@@ -78,17 +80,19 @@ cd namCol_frontend;
 npm install
 ```
 
-3) Initialize the project
-```bash
-npm init -y
-```
-
-4) Install Vite as a development dependency
-```bash
-npm install -D vite
-```
-
-5) Start the development server
+3) Start the development server
 ```bash
 npm run dev
 ```
+
+---
+
+## 🚀 Technologies Used  
+
+This project was built with:  
+
+- **JavaScript (Vanilla JS)** → For application logic and interactivity.  
+- **CSS (Vanilla CSS)** → For styling and responsive design.  
+- **Vite** → Development environment and build tool for fast and optimized frontend.  
+- **SPA (Single Page Application)** → Navigation and routing handled on the client-side with `router.js`.  
+

@@ -73,7 +73,22 @@ git clone https://github.com/Militaseeee/namCol_frontend.git
 cd namCol_frontend;
 ```
 
-2) Clone the repository
+2) Install dependencies
 ```bash
 npm install
+```
+
+3) Initialize the project
+```bash
+npm init -y
+```
+
+4) Install Vite as a development dependency
+```bash
+npm install -D vite
+```
+
+5) Start the development server
+```bash
+npm run dev
 ```

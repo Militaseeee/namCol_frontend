@@ -38,3 +38,42 @@ namCol_frontend/
 ```
 
 ---
+
+## 📂 Folder & File Explanation  
+
+- **`src/`** → Main source code of the frontend application.  
+  - **`assets/`** → Contains static resources such as images, icons, or other media used across the app.  
+    - **`icons/`** → Icon set used in the user interface.  
+  - **`pages/`** → Contains the HTML files for each main section of the application.  
+    - **`list_ingredients/`** → Page where users can view and manage the list of ingredients.  
+    - **`login/`** → Page for user authentication (login form).  
+    - **`preparation/`** → Step-by-step preparation instructions for each recipe.  
+    - **`profile/`** → User profile page, where personal information and preferences can be managed.  
+    - **`recipes/`** → Displays the list of available Colombian recipes.  
+    - **`sign_up/`** → User registration (sign-up form).  
+  - **`services/`** → Contains JavaScript files that handle communication with the backend API.  
+    - **`services.js`** → Defines the functions for fetching and sending data to the backend (e.g., recipes, users).  
+  - **`styles/`** → Global styles and CSS definitions for the application.  
+    - **`style.css`** → Main stylesheet applied across the frontend.  
+  - **`router.js`** → Manages client-side navigation between different pages.  
+
+- **`.gitignore`** → Specifies intentionally untracked files to ignore in version control (e.g., `node_modules`, logs).  
+- **`index.html`** → Main entry point of the application (root page).  
+- **`package.json`** → Project metadata and dependencies configuration for Node.js.  
+- **`package-lock.json`** → Locks dependency versions to ensure consistency across environments.  
+- **`README.md`** → Documentation of the project (this file).  
+
+---
+
+## 🔧 Configuration and Installation
+
+1) Clone the repository
+```powershell
+git clone https://github.com/Militaseeee/namCol_frontend.git
+cd namCol_frontend;
+```
+
+2) Clone the repository
+```bash
+npm install
+```

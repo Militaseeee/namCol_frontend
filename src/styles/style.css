@@ -211,7 +211,10 @@ html, body {
 .footer-logos{
     width: 5vh;
     height: 5vh;
-    margin-top: 1%;
-    margin-left: 2%;
     color: #3F3F3F;
+}
+
+.footer-links{
+  margin-top: 1%;
+  margin-left: 2%;
 }

@@ -1,7 +1,7 @@
 import { getRecipes } from "../../services/ingredientService";
 
 export async function initRecipes() {
-  console.log("🌮 Recipes page initialized");
+  console.log("🌮 Recipes page initialized c:");
 
   const recipeNameEl = document.getElementById("recipeName");
   const recipeImgEl = document.getElementById("recipeImage");

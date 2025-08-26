@@ -23,6 +23,12 @@ async function navigate(pathname) {
       module.initRecipes(); // llamamos a una función de arranque - Mientras tanto
     });
   }
+
+  if (pathname === "/recipes") {
+    import("./services/recipes.js").then(module => {
+      module.initRecipes();
+    });
+  }
   
 }
 

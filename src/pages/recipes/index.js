@@ -57,14 +57,37 @@ export async function showa_recipes(category = '') {
     setTimeout(addRecipeCardHoverEffect, 0);
 }
 
+/**
+ * Handles the active class on filter buttons
+ * @param {HTMLElement} clickedButton - The button that was clicked
+ */
+function toggleActiveFilter(clickedButton) {
+    // Remove active class from all buttons
+    const allFilterButtons = document.querySelectorAll('.filter-btn');
+    allFilterButtons.forEach(btn => btn.classList.remove('active'));
+    
+    // Add active class to clicked button
+    clickedButton.classList.add('active');
+}
+
 // Set up event listener for "All recipes" button
 const allBtn = document.querySelector('[data-filter="all"]');
 if (allBtn) {
     allBtn.addEventListener('click', e => {
         e.preventDefault();
+        toggleActiveFilter(e.target);
         showa_recipes();
     });
 }
+
+const categorys_btns = document.querySelectorAll('#filter-category');
+categorys_btns.forEach(btn => {
+    btn.addEventListener('click', e => {
+        const category = e.target.textContent;
+        toggleActiveFilter(e.target);
+        showa_recipes(category);
+    });
+});
 
 /**
  * Add hover animation effects to recipe cards

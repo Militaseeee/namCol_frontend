@@ -10,11 +10,22 @@ let recipes_list = null;
  */
 async function initData() {
     // Fetch recipes data from the API
-    data_recipes = await getRecipes();
+    data_recipes = await getRecipes();    
     
     // Get the recipes grid container element
     recipes_list = document.querySelector('.recipes-grid');
 }
+
+/**
+ * Formats category string to match JSON format (first letter uppercase, rest lowercase)
+ * @param {string} category - Category string to format
+ * @returns {string} Formatted category
+ */
+const formatCategory = (category) => {
+    if (!category) return '';
+    console.log(category.charAt(0).toUpperCase() + category.slice(1).toLowerCase());
+    return category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+};
 
 /**
  * Filter recipes by category
@@ -23,18 +34,49 @@ async function initData() {
  * @returns {Array} Filtered recipes
  */
 const filter_category = (json, category) => {
-    const data_filter = json.filter((item) => item.category === category);
+    const data_filter = json.filter(item => 
+        item.category.toLowerCase().includes(category.toLowerCase())
+        );
     return data_filter;
-}
+};
+
+/**
+ * Filter recipes by search term
+ * @param {Array} recipes - Array of recipes to filter
+ * @param {string} searchTerm - Term to search for in recipe titles
+ * @returns {Array} Filtered recipes
+ */
+const filterBySearch = (recipes, searchTerm) => {
+    if (!searchTerm) return recipes;
+    let data = recipes.filter(item => 
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    if (!data.length) {
+        data = filter_category(recipes, formatCategory(searchTerm));
+    }
+    return data;
+};
 
 /**
  * Display recipes in the grid
  * @param {string} category - Optional category to filter recipes
+ * @param {string} searchTerm - Optional search term to filter recipes
  */
-export async function showa_recipes(category = '') {
-    // Filter data if category is provided, otherwise show all recipes
-    const data = category ? filter_category(data_recipes, category) : data_recipes;
+export async function showa_recipes(category = '', searchTerm = '') {
+    // Apply both category and search filters
+    let data = data_recipes;
+
+    if (category) {
+        data = filter_category(data, category);
+    }
+    if (searchTerm) {
+        data = filterBySearch(data, searchTerm);
+    }
     
+    if (!data) {
+        recipes_list.innerHTML = '<p>the category does not exist</p>';
+        return
+    }
     // Clear current recipes
     recipes_list && (recipes_list.innerHTML = '');
     
@@ -70,23 +112,47 @@ function toggleActiveFilter(clickedButton) {
     clickedButton.classList.add('active');
 }
 
+// Initialize variables for current filters
+let currentCategory = '';
+let currentSearch = '';
+
 // Set up event listener for "All recipes" button
 const allBtn = document.querySelector('[data-filter="all"]');
 if (allBtn) {
     allBtn.addEventListener('click', e => {
         e.preventDefault();
+        currentCategory = '';
         toggleActiveFilter(e.target);
-        showa_recipes();
+        showa_recipes(currentCategory, currentSearch);
     });
 }
 
+// Set up event listeners for category buttons
 const categorys_btns = document.querySelectorAll('#filter-category');
 categorys_btns.forEach(btn => {
     btn.addEventListener('click', e => {
-        const category = e.target.textContent;
+        currentCategory = e.target.textContent;
         toggleActiveFilter(e.target);
-        showa_recipes(category);
+        showa_recipes(currentCategory, currentSearch);
     });
+});
+
+// Set up search functionality
+const searchInput = document.querySelector('#search-input');
+const searchBtn = document.querySelector('.search-btn');
+
+// Search on button click
+searchBtn.addEventListener('click', () => {
+    currentSearch = searchInput.value;    
+    showa_recipes(currentCategory, currentSearch);
+});
+
+// Search on enter key press
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        currentSearch = e.target.value;
+        showa_recipes(currentCategory, currentSearch);
+    }
 });
 
 /**

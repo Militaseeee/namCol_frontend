@@ -27,8 +27,12 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 3rem;
-  background-color: #FFC042; /* Amarillo de la landing */
+  padding: 1.5rem 3rem;
+  background-color: #FFC042;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap; 
 }
 
 .navbar .logo {
@@ -36,27 +40,33 @@ html, body {
   font-weight: bold;
   color: #fff;
 }
-.nav-button{
-    display: flex;
-    width: 5rem;
-    height: 3vh;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 15px;
-    border: none;
-    margin-left: 1.5rem;
-    
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 15px;
+  border: none;
+  margin: 0.3rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem; 
+  font-weight: 600;
 }
+
 .navbar nav {
-    display: flex;
-    justify-content: flex-end;
-    width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  width: auto;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
+
 .navbar nav a {
   text-decoration: none;
   color: black;
-  font-weight: 500;
+  font-weight: bold;
+  flex-wrap: wrap;
 }
 
 .navbar nav a:hover {
@@ -69,8 +79,11 @@ html, body {
   justify-content: space-around;
   align-items: center;
   padding: 4rem 3rem;
-  background-color: #FFC042; /* Amarillo */
+  background-color: #FFC042; 
+  gap: 1rem;
+  flex-wrap: wrap;
 }
+
 
 .hero-text {
   max-width: 50%;
@@ -82,9 +95,12 @@ html, body {
   margin-bottom: 1.5rem;
   color: #000;
 }
-#black-logo{
-    width: 35vw;
+#black-logo {
+  max-width: 500px; /* controlado y responsive */
+  width: 100%;
+  height: auto;
 }
+
 .search-box {
   display: flex;
   align-items: center;
@@ -92,7 +108,7 @@ html, body {
   border-radius: 25px;
   overflow: hidden;
   width: 100%;
-  max-width: 350px;
+  max-width: 500px;
 }
 
 .search-box input {
@@ -110,9 +126,16 @@ html, body {
   cursor: pointer;
 }
 
-.hero-img img {
+/* .hero-img img {
   max-width: 500px;
   height: auto;
+} */
+
+.hero-img img {
+  width: 100%;
+  max-width: 500px; /* no más grande que esto */
+  height: auto;
+  object-fit: contain;
 }
 
 /* ---------------- FEATURED RECIPES ---------------- */
@@ -126,11 +149,13 @@ html, body {
   margin-bottom: 2rem;
 }
 
+
 .recipe-cards {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 10rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -139,6 +164,8 @@ html, body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
   width: 250px;
+  max-width: 45%;
+  min-width: 180px;
   transition: transform 0.2s ease;
 }
 
@@ -154,7 +181,7 @@ html, body {
 
 .card p {
   padding: 1rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .btn-more {
@@ -165,10 +192,40 @@ html, body {
   border-radius: 20px;
   cursor: pointer;
   font-weight: 600;
+  margin-bottom: 3rem;
 }
 
 .btn-more:hover {
   background: #e6a82f;
+}
+
+/* .benefits{
+  display: flex;
+  justify-content: space-between;
+} */
+.benefits {
+  display: flex;
+  justify-content: space-between; /* espacio entre columnas controlado */
+  align-items: flex-start;         /* alinear elementos por arriba */
+  gap: 2rem;                       /* separación consistente */
+  max-width: 1100px;               /* contenedor centralizado */
+  margin: 0 auto;                  /* centrar la sección en la página */
+  padding: 3rem 1rem;              /* espacio interior */
+}
+.benefits div{
+  flex: 1 1 30%;                   /* cada columna toma ~30% del ancho, pero es flexible */
+  display: flex;
+  flex-direction: column;          /* apilar imagen arriba y texto abajo */
+  align-items: center;             /* CENTRAR la imagen horizontalmente */
+  text-align: center;              /* CENTRAR el texto */
+  gap: 0.75rem;                    /* separación entre imagen y texto */
+}
+.benefits div img{
+  max-width: 100px;
+}
+.benefits div p{
+  font-weight: 800;
+  max-width: 280px;
 }
 
 /* ---------------- FOOTER ---------------- */
@@ -192,12 +249,13 @@ html, body {
 }
 .footer-nav{
     display: flex;
+    
 }
 .footer-nav a {
   margin-left: 1.5rem;
   text-decoration: none;
   color: #3F3F3F;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .footer-nav a:hover {
@@ -217,4 +275,124 @@ html, body {
 .footer-links{
   margin-top: 1%;
   margin-left: 2%;
+}
+
+
+
+/*Responsive*/
+/* Tablet / pantallas medianas */
+@media (max-width: 1024px) {
+  .search-box{
+    max-width: 350px;
+  }
+  .hero {
+    padding: 3rem 2rem;
+  }
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  #black-logo {
+    max-width: 140px;
+  }
+  .card {
+    max-width: 220px;
+  }
+  h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+}
+
+/* Móvil / phones */
+@media (max-width: 768px) {
+  /* Navbar: logo arriba, links abajo centrados */
+  .navbar {
+    padding: 1rem 1.2rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar .logo {
+    order: 1;
+  }
+  .navbar nav {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  /* Hero: apilar verticalmente */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .hero-text {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+  .hero-text h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+  .hero-img {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-img img {
+    max-width: 260px;
+  }
+
+  /* Search */
+  .search-box {
+    max-width: 50%;
+    margin: 0.75rem auto 0;
+  }
+  .footer-container{
+    margin-bottom: 2rem;
+  }
+
+}
+
+/* Pequeños teléfonos */
+@media (max-width: 480px) {
+  .search-box{
+    max-width: 80%;
+  }
+  .nav-button {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .hero-text h1 {
+    font-size: 1.4rem;
+  }
+  .card img {
+    height: 120px;
+  }
+  .benefits{
+    justify-content: center;
+  }
+  .benefits div img{
+    max-width: 60px;
+  }
+  .recipe-cards{
+    gap: 5rem;
+    margin-bottom: 4rem;
+  }
+  
+  .footer-logos-container {
+    gap: 1rem;
+  }
+  .footer-nav{
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .footer-nav a{
+    margin-left: 0;
+  }
 }

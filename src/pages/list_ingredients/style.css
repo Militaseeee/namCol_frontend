@@ -1,0 +1,115 @@
+/* Main container */
+.recipe-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 4rem 4rem;
+  gap: 3rem;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Left column */
+.container-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container-left h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  max-width: 25dvw;
+}
+
+.container-left img {
+  width: 280px;
+  height: 200px;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.recipe-paragraph {
+    width: 25dvw;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Button LET’S COOK */
+.btn-cook {
+  background: #ccc;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #333;
+  transition: 0.3s ease;
+}
+
+.btn-more:hover {
+  background: #aaa;
+}
+
+/* Right column */
+.container-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-right h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.container-right span {
+  font-size: 0.9rem;
+  color: #555;
+  display: block;
+}
+.ingredients-text{
+    margin-bottom: 1.2rem;
+}
+
+/* Ingredients list */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+
+.list li input[type="checkbox"] {
+  appearance: none;         
+  -webkit-appearance: none; 
+  -moz-appearance: none;    
+  width: 18px;
+  height: 18px;
+  border: 3px solid #D9D9D9;
+  border-radius: 50%;       /* círculo */
+  margin-right: 10px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Cuando están seleccionados */
+.list li input[type="checkbox"]:checked {
+  background-color: #FFC042; /* amarillo como el header/footer */
+  border-color: #D9D9D9;
+}

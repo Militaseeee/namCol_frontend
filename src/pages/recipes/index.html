@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NamCol - Recipes</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <img class="logo" src="../../assets/logo ñamcol largo black 1.png" alt="NamCol Logo">
+        <nav aria-label="Main Navigation">
+
+            <button class="nav-button">
+                <a href="/signin" data-link>SIGN IN</a>
+            </button>
+            <button class="nav-button">
+                <a href="/signup" data-link>SIGN UP</a>
+            </button>
+    
+    
+        </nav>
+        
+    </header>
+    <img src="../../assets/Waves.svg" alt="waves" style="width: 100%;">
+
+    <!-- Main Content -->
+    <main class="main">
+        
+
+        <div class="container">
+            <!-- Recipes Title -->
+            <h1 class="recipes-title">RECIPES</h1>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search recipe">
+                <button class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21 21L15 15L21 21ZM17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All recipes</button>
+                <button class="filter-btn" data-filter="andean">Andean</button>
+                <button class="filter-btn" data-filter="caribbean">Caribbean</button>
+                <button class="filter-btn" data-filter="pacific">Pacific</button>
+            </div>
+
+            <!-- Recipes Grid -->
+            <div class="recipes-grid">
+                <!-- First Row - Real Recipe Cards -->
+                <div class="recipe-card" data-category="andean">
+                    <div class="recipe-image">
+                        <img src="/images/BandejaPaisa.jpg" alt="Bandeja Paisa" class="recipe-img bandeja-paisa">
+                    </div>
+                    <h3 class="recipe-title">BANDEJA PAISA</h3>
+                </div>
+
+                <div class="recipe-card" data-category="caribbean">
+                    <div class="recipe-image">
+                        <img src="/images/BandejaPaisa.jpg" alt="Ajiaco" class="recipe-img ajiaco">
+                    </div>
+                    <h3 class="recipe-title">AJIACO</h3>
+                </div>
+
+                <div class="recipe-card" data-category="pacific">
+                    <div class="recipe-image">
+                        <img src="/images/BandejaPaisa.jpg" alt="Arroz de Coco" class="recipe-img arroz-coco">
+                    </div>
+                    <h3 class="recipe-title">ARROZ DE COCO</h3>
+                </div>
+
+                <!-- Placeholder Cards -->
+                <div class="recipe-card placeholder" data-category="andean">
+                    <div class="recipe-image placeholder-img"></div>
+                    <h3 class="recipe-title">LOREM IPSUM</h3>
+                </div>
+
+                <div class="recipe-card placeholder" data-category="caribbean">
+                    <div class="recipe-image placeholder-img"></div>
+                    <h3 class="recipe-title">LOREM IPSUM</h3>
+                </div>
+
+                <div class="recipe-card placeholder" data-category="pacific">
+                    <div class="recipe-image placeholder-img"></div>
+                    <h3 class="recipe-title">LOREM IPSUM</h3>
+                </div>
+
+                <div class="recipe-card placeholder" data-category="andean">
+                    <div class="recipe-image placeholder-img"></div>
+                    <h3 class="recipe-title">LOREM IPSUM</h3>
+                </div>
+
+                <div class="recipe-card placeholder" data-category="caribbean">
+                    <div class="recipe-image placeholder-img"></div>
+                    <h3 class="recipe-title">LOREM IPSUM</h3>
+                </div>
+
+                <div class="recipe-card placeholder" data-category="pacific">
+                    <div class="recipe-image placeholder-img"></div>
+                    <h3 class="recipe-title">LOREM IPSUM</h3>
+                </div>
+
+                <div class="recipe-card placeholder" data-category="andean">
+                    <div class="recipe-image placeholder-img"></div>
+                    <h3 class="recipe-title">LOREM IPSUM</h3>
+                </div>
+
+                <div class="recipe-card placeholder" data-category="caribbean">
+                    <div class="recipe-image placeholder-img"></div>
+                    <h3 class="recipe-title">LOREM IPSUM</h3>
+                </div>
+
+                <div class="recipe-card placeholder" data-category="pacific">
+                    <div class="recipe-image placeholder-img"></div>
+                    <h3 class="recipe-title">LOREM IPSUM</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+    
+            <nav class="footer-nav">
+                <a href="/recipes" data-link>Recipes</a>
+                <a href="/signin" data-link>Sign In</a>
+                <a href="/signup" data-link>Sign Up</a>
+                <a href="/signin" data-link>About us</a>
+                <a href="/signup" data-link>Contact</a>
+            </nav>
+        </div>
+        <div class="footer-logos-container">
+            <img src="./src/assets/github-logo.png" alt="logo github" class="footer-logos">
+            <img src="./src/assets/instagram-logo.png" alt="instagram logo" class="footer-logos">
+        </div>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>

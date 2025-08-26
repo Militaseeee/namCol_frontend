@@ -17,17 +17,6 @@ async function initData() {
 }
 
 /**
- * Formats category string to match JSON format (first letter uppercase, rest lowercase)
- * @param {string} category - Category string to format
- * @returns {string} Formatted category
- */
-const formatCategory = (category) => {
-    if (!category) return '';
-    console.log(category.charAt(0).toUpperCase() + category.slice(1).toLowerCase());
-    return category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
-};
-
-/**
  * Filter recipes by category
  * @param {Array} json - Array of recipes
  * @param {string} category - Category to filter by
@@ -48,13 +37,13 @@ const filter_category = (json, category) => {
  */
 const filterBySearch = (recipes, searchTerm) => {
     if (!searchTerm) return recipes;
-    let data = recipes.filter(item => 
+    let data_filter = recipes.filter(item => 
         item.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
-    if (!data.length) {
-        data = filter_category(recipes, formatCategory(searchTerm));
+    if (!data_filter.length) {
+        data_filter = filter_category(recipes, searchTerm);
     }
-    return data;
+    return data_filter;
 };
 
 /**
@@ -64,17 +53,17 @@ const filterBySearch = (recipes, searchTerm) => {
  */
 export async function showa_recipes(category = '', searchTerm = '') {
     // Apply both category and search filters
-    let data = data_recipes;
-
-    if (category) {
-        data = filter_category(data, category);
-    }
-    if (searchTerm) {
-        data = filterBySearch(data, searchTerm);
-    }
+    let data_filter = data_recipes;
     
-    if (!data) {
-        recipes_list.innerHTML = '<p>the category does not exist</p>';
+    if (category) {
+        data_filter = filter_category(data_filter, category);
+    }else if (searchTerm) {
+        data_filter = filterBySearch(data_filter, searchTerm);
+    }
+    // Clear search input after displaying results
+    searchInput.value = '';
+    if (!data_filter.length) {
+        recipes_list.innerHTML = '<p class="recipe-title">the category does not exist</p>';
         return
     }
     // Clear current recipes
@@ -82,7 +71,7 @@ export async function showa_recipes(category = '', searchTerm = '') {
     
     // Build HTML for recipe cards
     let list_html = '';
-    data?.forEach(item => {
+    data_filter?.forEach(item => {
         const html = `
         <div class="recipe-card" data-category="${item.category}">
             <div class="recipe-image">
@@ -92,7 +81,7 @@ export async function showa_recipes(category = '', searchTerm = '') {
         </div> `;
         list_html += html;
     });
-
+    
     // Insert recipe cards into the grid
     recipes_list && (recipes_list.innerHTML = list_html);
     // Add hover effects after cards are rendered
@@ -112,18 +101,12 @@ function toggleActiveFilter(clickedButton) {
     clickedButton.classList.add('active');
 }
 
-// Initialize variables for current filters
-let currentCategory = '';
-let currentSearch = '';
-
 // Set up event listener for "All recipes" button
 const allBtn = document.querySelector('[data-filter="all"]');
 if (allBtn) {
     allBtn.addEventListener('click', e => {
-        e.preventDefault();
-        currentCategory = '';
         toggleActiveFilter(e.target);
-        showa_recipes(currentCategory, currentSearch);
+        showa_recipes();
     });
 }
 
@@ -131,9 +114,11 @@ if (allBtn) {
 const categorys_btns = document.querySelectorAll('#filter-category');
 categorys_btns.forEach(btn => {
     btn.addEventListener('click', e => {
-        currentCategory = e.target.textContent;
+        const currentCategory = e.target.textContent;
+        console.log(currentCategory);
+
         toggleActiveFilter(e.target);
-        showa_recipes(currentCategory, currentSearch);
+        showa_recipes(currentCategory);
     });
 });
 
@@ -143,15 +128,15 @@ const searchBtn = document.querySelector('.search-btn');
 
 // Search on button click
 searchBtn.addEventListener('click', () => {
-    currentSearch = searchInput.value;    
-    showa_recipes(currentCategory, currentSearch);
+    const currentSearch = searchInput.value;    
+    showa_recipes(undefined, currentSearch);
 });
 
 // Search on enter key press
 searchInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
-        currentSearch = e.target.value;
-        showa_recipes(currentCategory, currentSearch);
+        const currentSearch = e.target.value;
+        showa_recipes(undefined, currentSearch);
     }
 });
 

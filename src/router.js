@@ -1,3 +1,5 @@
+import { getSession, isAuthenticated } from "./services/auth.js";
+
 const routes = {
   "/": "./src/pages/home/index.html",
   "/recipes": "./src/pages/recipes/index.html",
@@ -6,10 +8,10 @@ const routes = {
   "/listingredients": "./src/pages/list_ingredients/index.html",
 };
 
-async function navigate(pathname) {
+export async function navigate(pathname) {
   const route = routes[pathname];
   if (!route) {
-    document.getElementById("content").innerHTML = "<h1>404 - Page Not Found</h1>";
+    document.getElementById("content").innerHTML = '<h1 class="no-found">404 - Page Not Found</h1>';
     return;
   }
 
@@ -18,11 +20,25 @@ async function navigate(pathname) {
 
   history.pushState({}, "", pathname);
 
+  const session = getSession();
+  if (session) {
+    isAuthenticated();
+    if(pathname === "/signin" || pathname === "/signup") {
+      navigate("/");
+    }
+  }
+
   if (pathname === "/listingredients") {
     import("./pages/list_ingredients/index.js").then(module => {
       module.initRecipes(); // llamamos a una función de arranque - Mientras tanto
     });
   }
+
+  if (pathname === "/signin") {
+  import("./pages/login/index.js").then(module => {
+    module.initLogin();
+  });
+}
   
 }
 
@@ -37,3 +53,8 @@ document.body.addEventListener("click", (e) => {
 
 // Load home at startup
 navigate(window.location.pathname);
+
+/* window.addEventListener("popstate", () => {
+  navigate(location.pathname, false);
+});
+ */

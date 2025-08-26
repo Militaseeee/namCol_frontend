@@ -1,6 +1,5 @@
 // Import required dependencies
-import axios from 'axios';
-import { BASE_URL } from '../services/services';
+import { getRecipes } from '../../services/ingredientService';
 
 // Initialize variables to store recipes data and DOM element
 let data_recipes = null;
@@ -11,7 +10,8 @@ let recipes_list = null;
  */
 async function initData() {
     // Fetch recipes data from the API
-    data_recipes = (await axios.get(BASE_URL+'/recipes')).data;
+    data_recipes = await getRecipes();
+    
     // Get the recipes grid container element
     recipes_list = document.querySelector('.recipes-grid');
 }

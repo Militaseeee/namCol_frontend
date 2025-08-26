@@ -25,7 +25,7 @@ async function navigate(pathname) {
   }
 
   if (pathname === "/recipes") {
-    import("./services/recipes.js").then(module => {
+    import("./pages/recipes/index.js").then(module => {
       module.initRecipes();
     });
   }

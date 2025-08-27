@@ -1,19 +1,25 @@
 import { getRecipes } from "../../services/ingredientService";
 
-export async function initRecipes() {
-  console.log("🌮 Recipes page initialized");
+
+export async function initIngredientsPage() {
+  console.log("🌮 Recipes page initialized c:");
 
   const recipeNameEl = document.getElementById("recipeName");
   const recipeImgEl = document.getElementById("recipeImage");
   const recipeDescEl = document.getElementById("recipeDescription");
   const ingredientsListEl = document.getElementById("ingredientsList");
 
-  let allRecipes = await getRecipes();
-  console.log("✅ Recetas obtenidas:", allRecipes);
+  // 🔹 Intentamos cargar la receta seleccionada de localStorage
+  const savedRecipe = localStorage.getItem("selectedRecipe");
+  let recipe = savedRecipe ? JSON.parse(savedRecipe) : null;
 
-  if (!allRecipes.length) return;
+  // Si no hay receta guardada, usamos la primera
+  if (!recipe) {
+    let allRecipes = await getRecipes();
+    if (!allRecipes.length) return;
+    recipe = allRecipes[0];
+  }
 
-  const recipe = allRecipes[0]; // primera receta
   console.log("👉 Renderizando receta:", recipe);
 
   recipeNameEl.textContent = recipe.title;

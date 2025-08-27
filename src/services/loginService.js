@@ -36,3 +36,21 @@ export async function forgotPassword(email) {
   }
   
 }
+
+export async function resetPassword(token, newPassword) {
+  try {
+    const response = await fetch(`${BASE_URL}/reset-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token, newPassword }),
+    });
+
+    const data = await response.json();
+    return { ok: response.ok, data };
+  } catch (error) {
+    console.error("Reset Password error:", error);
+    return { ok: false, data: { message: "Server error" } };
+  }
+}

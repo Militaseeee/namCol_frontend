@@ -6,6 +6,7 @@ const routes = {
   "/signin": "./src/pages/login/index.html",
   "/signup": "./src/pages/sign_up/index.html",
   "/forgot-password":"./src/pages/login/formFP.html",
+  "/reset-password":"./src/pages/login/formRP.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
 };
 
@@ -16,8 +17,12 @@ export async function navigate(pathname) {
     return;
   }
 
+
+
   const html = await fetch(route).then(res => res.text());
   document.getElementById("content").innerHTML = html;
+
+  const token = new URLSearchParams(window.location.search).get("token");
 
   history.pushState({}, "", pathname);
 
@@ -44,6 +49,13 @@ export async function navigate(pathname) {
   if (pathname === "/forgot-password") {
   import("./pages/login/index.js").then(module => {
     module.initForgotPassword();
+  });
+}
+
+  if (pathname === "/reset-password") {
+    console.log("reset-password page loaded");
+  import("./pages/login/index.js").then(module => {
+    module.initResetPassword(token);
   });
 }
   

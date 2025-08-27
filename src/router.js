@@ -34,6 +34,11 @@ export async function navigate(pathname) {
     });
   }
 
+  if (pathname === "/recipes") {
+    import("./pages/recipes/index.js").then(module => {
+      module.initRecipes();
+    });
+  }
   if (pathname === "/signin") {
   import("./pages/login/index.js").then(module => {
     module.initLogin();

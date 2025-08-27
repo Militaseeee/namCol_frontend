@@ -5,6 +5,7 @@ const routes = {
   "/recipes": "./src/pages/recipes/index.html",
   "/signin": "./src/pages/login/index.html",
   "/signup": "./src/pages/sign_up/index.html",
+  "/forgot-password":"./src/pages/login/formFP.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
 };
 
@@ -37,6 +38,12 @@ export async function navigate(pathname) {
   if (pathname === "/signin") {
   import("./pages/login/index.js").then(module => {
     module.initLogin();
+  });
+}
+
+  if (pathname === "/forgot-password") {
+  import("./pages/login/index.js").then(module => {
+    module.initForgotPassword();
   });
 }
   

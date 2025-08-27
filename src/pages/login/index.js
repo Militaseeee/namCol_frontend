@@ -1,4 +1,4 @@
-import { loginUser } from "../../services/loginService.js";
+import { loginUser, forgotPassword } from "../../services/loginService.js";
 import { navigate } from "../../router.js";
 import { saveLocalStorage, saveSessionStorage} from "../../services/auth.js";
 
@@ -28,6 +28,26 @@ export function initLogin() {
 
       
       navigate("/");
+    } else {
+      console.log("❌ " + (data.message || data.mensaje));
+    }
+  });
+}
+
+export function initForgotPassword() {
+  const form = document.getElementById("forgotPassForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+
+    const { ok, data } = await forgotPassword(email);
+
+    if (ok) {
+      console.log("✅ " + data.message);
+      navigate("/signin");
     } else {
       console.log("❌ " + (data.message || data.mensaje));
     }

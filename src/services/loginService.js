@@ -18,3 +18,21 @@ export async function loginUser(email, password) {
   }
 }
 
+export async function forgotPassword(email) {
+  try {
+    const response = await fetch(`${BASE_URL}/forgot-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+    return { ok: response.ok, data };
+  } catch (error) {
+    console.error("Forgot Password error:", error);
+    return { ok: false, data: { message: "Server error" } };
+  }
+  
+}

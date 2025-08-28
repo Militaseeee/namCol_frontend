@@ -2,6 +2,8 @@ import { getProfileData, deleteProfile } from "../../services/profileService.js"
 import { getSession, logout } from "../../services/auth.js";
 import { navigate } from "../../router.js";
 
+let data_recipes = null;
+
 export async function initProfile() {
   const nameUser = document.getElementById("nameUser");
 
@@ -32,10 +34,11 @@ function renderRecipes(data) {
   completedContainer.innerHTML = "";
   unfinishedContainer.innerHTML = "";
 
-  const createCard = (r) => `
-    <div class="card">
+ const createCard = (r) => `
+    <div class="card" 
+         data-recipe='${JSON.stringify(r)}'>
       <img src="${r.image_url}" alt="${r.title}" />
-      <p>${r.title}</p>
+      <h3 class="recipe-title">${r.title}</h3>
     </div>
   `;
 
@@ -50,6 +53,8 @@ function renderRecipes(data) {
   } else {
     unfinishedContainer.innerHTML = `<p class="empty-message">There are no recipes unfinished in your history.</p>`;
   }
+
+  addRecipeClickEvent();
 }
 
 export function logOut() {
@@ -82,3 +87,16 @@ export function deleteAccount() {
   });
 }
 
+function addRecipeClickEvent() {
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => goToRecipeSelected(card));
+    });
+}
+
+function goToRecipeSelected(card) {
+  const recipe = JSON.parse(card.dataset.recipe);
+  localStorage.setItem("selectedRecipeHistory", JSON.stringify(recipe));
+  navigate("/listingredients");
+}

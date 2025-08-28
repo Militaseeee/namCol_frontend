@@ -166,7 +166,7 @@ html, body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
   width: 250px;
-  max-width: 45%;
+  /* max-width: 45%; */
   min-width: 180px;
   transition: transform 0.2s ease;
 }

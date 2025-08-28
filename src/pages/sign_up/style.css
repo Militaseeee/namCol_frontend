@@ -31,7 +31,7 @@
     color: #555;
 }
 
-input, select {
+.input-register, select {
     width: 100%;
     padding: 12px;
     margin: 10px 0;

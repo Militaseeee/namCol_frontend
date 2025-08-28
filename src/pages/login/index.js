@@ -4,8 +4,6 @@ import { saveLocalStorage, saveSessionStorage} from "../../services/auth.js";
 
 export function initLogin() {
   const form = document.getElementById("loginForm");
-  const btnSignin = document.getElementById("btnSignin");
-  btnSignin.style.display = "none";
   if (!form) return;
 
   form.addEventListener("submit", async (e) => {

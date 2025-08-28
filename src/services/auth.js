@@ -23,8 +23,17 @@ export function getSession() {
 }
 
 export function logout() {
+    const btnSignin = document.getElementById("btnSignin");
+    const btnSignup = document.getElementById("btnSignup");
+    const btnName = document.getElementById("btnNameButton");
+
     localStorage.removeItem("session");
     sessionStorage.removeItem("session");
+
+    btnName.remove();
+    btnSignin.style.display = "block";
+    btnSignup.style.display = "block";
+
 }
 
 export function isAuthenticated() {
@@ -38,7 +47,8 @@ export function isAuthenticated() {
     btnSignup.style.display = "none";
 
     btnName.classList.add("nav-button");
+    btnName.id = "btnNameButton";
     btnName.innerHTML = `<a href="/profile" data-link id="btnName">${name}</a>`;
-    if (document.getElementById("btnName")) return;
+    if (document.getElementById("btnNameButton")) return;
     nav.appendChild(btnName);
 }

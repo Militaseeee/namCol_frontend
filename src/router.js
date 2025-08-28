@@ -7,6 +7,7 @@ const routes = {
   "/signup": "./src/pages/sign_up/index.html",
   "/profile": "./src/pages/profile/index.html",
   "/forgot-password":"./src/pages/login/formFP.html",
+  "/reset-password":"./src/pages/login/formRP.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
 };
 
@@ -17,12 +18,31 @@ export async function navigate(pathname) {
     return;
   }
 
+  const session = getSession();
+
+   // Protected routes
+  const protectedRoutes = ["/listingredients"];
+
+  if (protectedRoutes.includes(pathname) && !session) {
+    // alert("You must log in to access this page.");
+    document.getElementById("content").innerHTML = `
+    <h1 class="no-found">401 - Access denied</h1>
+    <p class="no-found">You must log in to access this page.</p>
+  `;
+    setTimeout(() => {
+      navigate("/signin");
+    }, 3000);
+
+  return;
+  }
+
   const html = await fetch(route).then(res => res.text());
   document.getElementById("content").innerHTML = html;
 
+  const token = new URLSearchParams(window.location.search).get("token");
+
   history.pushState({}, "", pathname);
 
-  const session = getSession();
   if (session) {
     isAuthenticated();
     if(pathname === "/signin" || pathname === "/signup") {
@@ -32,10 +52,15 @@ export async function navigate(pathname) {
 
   if (pathname === "/listingredients") {
     import("./pages/list_ingredients/index.js").then(module => {
-      module.initRecipes(); // llamamos a una función de arranque - Mientras tanto
+      module.initIngredientsPage(); 
     });
   }
 
+  if (pathname === "/recipes") {
+    import("./pages/recipes/index.js").then(module => {
+      module.initRecipesPage();
+    });
+  }
   if (pathname === "/signin") {
   import("./pages/login/index.js").then(module => {
     module.initLogin();
@@ -46,7 +71,19 @@ export async function navigate(pathname) {
   import("./pages/profile/index.js").then(module => {
     module.initProfile();
     module.logOut();
-    module.deleteAccount();
+    module.deleteAccount();});
+}
+
+  if (pathname === "/forgot-password") {
+  import("./pages/login/index.js").then(module => {
+    module.initForgotPassword();
+  });
+}
+
+  if (pathname === "/reset-password") {
+    console.log("reset-password page loaded");
+  import("./pages/login/index.js").then(module => {
+    module.initResetPassword(token);
   });
 }
   
@@ -64,7 +101,6 @@ document.body.addEventListener("click", (e) => {
 // Load home at startup
 navigate(window.location.pathname);
 
-/* window.addEventListener("popstate", () => {
+window.addEventListener("popstate", () => {
   navigate(location.pathname, false);
 });
- */

@@ -39,18 +39,16 @@ function renderRecipes(data) {
     </div>
   `;
 
- // 🔹 Si hay completadas, muestro las cards. Si no, un mensaje.
   if (data.completedRecipes.length > 0) {
     completedContainer.innerHTML = data.completedRecipes.map(createCard).join("");
   } else {
-    completedContainer.innerHTML = `<p class="empty-message">No hay recetas completadas en tu historial</p>`;
+    completedContainer.innerHTML = `<p class="empty-message">There are no completed recipes in your history.</p>`;
   }
 
-  // 🔹 Si hay en progreso, muestro las cards. Si no, un mensaje.
   if (data.unfinishedRecipes.length > 0) {
     unfinishedContainer.innerHTML = data.unfinishedRecipes.map(createCard).join("");
   } else {
-    unfinishedContainer.innerHTML = `<p class="empty-message">No hay recetas en progreso en tu historial</p>`;
+    unfinishedContainer.innerHTML = `<p class="empty-message">There are no recipes unfinished in your history.</p>`;
   }
 }
 

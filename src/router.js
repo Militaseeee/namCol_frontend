@@ -6,6 +6,7 @@ const routes = {
   "/signin": "./src/pages/login/index.html",
   "/signup": "./src/pages/sign_up/index.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
+  "/contact": "./src/pages/contact/index.html"
 };
 
 export async function navigate(pathname) {
@@ -27,7 +28,7 @@ export async function navigate(pathname) {
       navigate("/");
     }
   }
-
+  
   if (pathname === "/listingredients") {
     import("./pages/list_ingredients/index.js").then(module => {
       module.initRecipes(); // llamamos a una función de arranque - Mientras tanto
@@ -39,12 +40,16 @@ export async function navigate(pathname) {
       module.initRecipes();
     });
   }
+  
   if (pathname === "/signin") {
   import("./pages/login/index.js").then(module => {
     module.initLogin();
-  });
-}
+  });  
+  }
   
+  if (pathname === "/contact") {
+    import("./pages/contact/index.js");
+  }
 }
 
 // Support for clicks on links with data-links

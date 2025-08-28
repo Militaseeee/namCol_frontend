@@ -35,6 +35,25 @@ export async function initHomePage() {
 
     container.appendChild(card);
   });
+  initSearchRedirect();
+}
+
+function initSearchRedirect() {
+  const input = document.querySelector(".search-box input"); 
+  const button = document.querySelector(".search-box button");
+
+  if (!input || !button) return;
+
+  button.addEventListener("click", () => {
+    const term = input.value.trim();
+
+    if (term.length > 0) {
+        
+      localStorage.setItem("searchTerm", term);
+    }
+
+    navigate("/recipes");
+  });
 }
 
 function goToRecipe(recipe) {

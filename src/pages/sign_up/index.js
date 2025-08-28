@@ -63,7 +63,6 @@ export function initRegister() {
     const password = document.getElementById("password").value.trim();
     const country = document.getElementById("country").value;
 
-    console.log (password)
 
     const namePattern = /^[A-Za-z\s]+$/;
     if (!namePattern.test(fullName)) {

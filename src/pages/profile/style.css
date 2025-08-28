@@ -40,7 +40,7 @@
 }
 
 .recipes-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }

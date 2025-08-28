@@ -78,6 +78,12 @@ export async function navigate(pathname) {
     module.initResetPassword(token);
   });
 }
+
+  if (pathname === "/signup") {
+  import("./pages/sign_up/index.js").then(module => {
+    module.initRegister();
+  });
+}
   
 }
 

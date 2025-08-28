@@ -202,7 +202,10 @@ html, body {
   margin-bottom: 3rem;
   margin-left: 2rem;
 }
-
+.btn-more a{
+  color: black;
+  text-decoration: none;
+}
 .btn-more:hover {
   background: #e8a929 !important;
 }

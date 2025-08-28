@@ -94,7 +94,7 @@ export async function navigate(pathname) {
   const existingSvg = document.querySelector(".short-waves");
   if (existingSvg) existingSvg.remove();
 
-  if (pathname === "/recipes" || pathname === "/listingredients") {
+  if (pathname === "/recipes" || pathname === "/listingredients" || pathname == "/restaurants" || pathname == "/preparation") {
     const svgImg = document.createElement("img");
     svgImg.draggable ="false"
     svgImg.src = "./src/assets/Waves-short.svg"; 

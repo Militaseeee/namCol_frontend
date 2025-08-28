@@ -44,15 +44,22 @@ function initSearchRedirect() {
 
   if (!input || !button) return;
 
-  button.addEventListener("click", () => {
+  const handleSearch = () => {
     const term = input.value.trim();
-
     if (term.length > 0) {
-        
       localStorage.setItem("searchTerm", term);
     }
-
     navigate("/recipes");
+  };
+
+  // Oprime el botón
+  button.addEventListener("click", handleSearch);
+
+  // Presiona Enter en el input
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
   });
 }
 

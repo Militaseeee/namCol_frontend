@@ -121,56 +121,6 @@ function initParallaxEffect() {
     });
 }
 
-/**
- * Initialize mouse follower effect (desktop only)
- */
-function initMouseFollower() {
-    // Only create mouse follower on desktop
-    if (window.innerWidth > 768) {
-        createMouseFollower();
-    }
-}
-
-/**
- * Create and setup mouse follower element
- */
-function createMouseFollower() {
-    const mouseFollower = document.createElement('div');
-    mouseFollower.id = 'mouse-follower';
-    mouseFollower.style.cssText = `
-        position: fixed;
-        width: 20px;
-        height: 20px;
-        background: radial-gradient(circle, #FFC042, transparent);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.6;
-        transition: all 0.1s ease;
-        transform: translate(-50%, -50%);
-    `;
-    document.body.appendChild(mouseFollower);
-    
-    // Mouse move handler
-    function handleMouseMove(e) {
-        mouseFollower.style.left = e.clientX + 'px';
-        mouseFollower.style.top = e.clientY + 'px';
-    }
-    
-    // Mouse leave handler
-    function handleMouseLeave() {
-        mouseFollower.style.opacity = '0';
-    }
-    
-    // Mouse enter handler
-    function handleMouseEnter() {
-        mouseFollower.style.opacity = '0.6';
-    }
-    
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
-}
 
 /**
  * Initialize Easter eggs and fun interactions
@@ -388,26 +338,6 @@ function initAccessibility() {
     }
 }
 
-/**
- * Initialize responsive features
- */
-function initResponsive() {
-    function handleResize() {
-        // Remove mouse follower on mobile
-        if (window.innerWidth <= 768) {
-            const mouseFollower = document.getElementById('mouse-follower');
-            if (mouseFollower) {
-                mouseFollower.remove();
-            }
-        } else if (!document.getElementById('mouse-follower')) {
-            // Re-add mouse follower on desktop
-            createMouseFollower();
-        }
-    }
-    
-    window.addEventListener('resize', handleResize);
-    handleResize(); // Call once on init
-}
 
 // Enhanced setup function with all features
 function setupAboutPage() {
@@ -415,7 +345,6 @@ function setupAboutPage() {
     initStaggeredAnimations();
     initTypingEffect();
     initParallaxEffect();
-    initMouseFollower();
     initEasterEggs();
     initSmoothScroll();
     initHoverEffects();

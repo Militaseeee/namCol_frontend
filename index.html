@@ -15,23 +15,29 @@
 <body>
 
   <!-- Navbar -->
-  <header class="navbar">
-    <a href="/">
-      <img class="logo" src="./src/assets/logo ñamcol largo black 1.png">
-    </a>
-    <nav>
-      <button class="nav-button" id="btnRecipes">
-          <a href="/recipes" data-link>RECIPES</a>
-      </button>
-      <button class="nav-button" id="btnSignin">
-          <a href="/signin" data-link>SIGN IN</a>
-      </button>
-      <button class="nav-button" id="btnSignup">
-          <a href="/signup" data-link>SIGN UP</a>
-      </button>
-      
-      
-    </nav>
+  <header class="navbar"  draggable="false">
+    <div class="navbar-wrapper">
+      <a href="/">
+        <img class="logo" src="./src/assets/logo ñamcol largo black 1.png"  draggable="false">
+      </a>
+      <nav>
+        <a href="/recipes" data-link>
+          <button class="nav-button" id="btnRecipes">
+              RECIPES
+          </button>
+        </a>
+        <a href="/signin" data-link>
+          <button class="nav-button" id="btnSignin">
+            SIGN IN
+          </button>
+        </a>
+        <a href="/signup" data-link>
+          <button class="nav-button" id="btnSignup">
+              SIGN UP
+          </button>
+        </a>
+      </nav>
+    </div>
   </header>
 
   <!-- Main Content -->

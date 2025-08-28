@@ -45,6 +45,8 @@ export async function navigate(pathname) {
   if (pathname === "/profile") {
   import("./pages/profile/index.js").then(module => {
     module.initProfile();
+    module.logOut();
+    module.deleteAccount();
   });
 }
   

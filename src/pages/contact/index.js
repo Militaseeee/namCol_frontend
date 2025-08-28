@@ -1,6 +1,6 @@
 const form = document.querySelector('form');
 console.log(form);
-const numberWhatsApp = '573135962354';
+const numberWhatsApp = '573011698191';
 
 form.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevents the form from being submitted in a traditional way

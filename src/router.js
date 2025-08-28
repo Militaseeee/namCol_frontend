@@ -9,6 +9,8 @@ const routes = {
   "/forgot-password": "./src/pages/login/formFP.html",
   "/reset-password": "./src/pages/login/formRP.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
+  "/contact": "./src/pages/contact/index.html",
+  "/about": "./src/pages/about/index.html",
   "/preparation": "./src/pages/preparation/index.html",
 };
 
@@ -86,7 +88,7 @@ export async function navigate(pathname) {
       navigate("/");
     }
   }
-
+  
   if (pathname === "/listingredients") {
     import("./pages/list_ingredients/index.js").then((module) => {
       module.initIngredientsPage();
@@ -98,7 +100,17 @@ export async function navigate(pathname) {
       module.initRecipesPage();
     });
   }
+  
+  if (pathname === "/contact") {
+    import("./pages/contact/index.js");
+  }
 
+  if (pathname === "/about") {
+    import("./pages/about/index.js").then(module => {
+      module.initAbout();
+    });
+  }
+  
   if (pathname === "/signin") {
     import("./pages/login/index.js").then((module) => {
       module.initLogin();

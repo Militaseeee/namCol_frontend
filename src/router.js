@@ -5,6 +5,7 @@ const routes = {
   "/recipes": "./src/pages/recipes/index.html",
   "/signin": "./src/pages/login/index.html",
   "/signup": "./src/pages/sign_up/index.html",
+  "/profile": "./src/pages/profile/index.html",
   "/forgot-password":"./src/pages/login/formFP.html",
   "/reset-password":"./src/pages/login/formRP.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
@@ -64,6 +65,13 @@ export async function navigate(pathname) {
   import("./pages/login/index.js").then(module => {
     module.initLogin();
   });
+}
+
+  if (pathname === "/profile") {
+  import("./pages/profile/index.js").then(module => {
+    module.initProfile();
+    module.logOut();
+    module.deleteAccount();});
 }
 
   if (pathname === "/forgot-password") {

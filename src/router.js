@@ -6,7 +6,8 @@ const routes = {
   "/signin": "./src/pages/login/index.html",
   "/signup": "./src/pages/sign_up/index.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
-  "/contact": "./src/pages/contact/index.html"
+  "/contact": "./src/pages/contact/index.html",
+  "/about": "./src/pages/about/index.html"
 };
 
 export async function navigate(pathname) {
@@ -49,6 +50,12 @@ export async function navigate(pathname) {
   
   if (pathname === "/contact") {
     import("./pages/contact/index.js");
+  }
+
+  if (pathname === "/about") {
+    import("./pages/about/index.js").then(module => {
+      module.initAbout();
+    });
   }
 }
 

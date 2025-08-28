@@ -9,6 +9,7 @@ const routes = {
   "/forgot-password": "./src/pages/login/formFP.html",
   "/reset-password": "./src/pages/login/formRP.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
+  "/restaurants": "./src/pages/restaurants/index.html",
   "/contact": "./src/pages/contact/index.html",
   "/about": "./src/pages/about/index.html",
   "/preparation": "./src/pages/preparation/index.html",

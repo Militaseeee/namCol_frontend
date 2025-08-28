@@ -49,11 +49,13 @@ export async function initIngredientsPage() {
     data.ingredients.forEach(ing => {
       const li = document.createElement("li");
       li.innerHTML = `
-        <label style="flex:1; display:flex; align-items:center;">
-          <input type="checkbox" ${ing.is_done ? "checked" : ""} data-ing="${ing.name}">
-          ${ing.name}
-        </label>
-        <span>${ing.quantity}</span>
+        <div style="display:flex; justify-content:space-between; width:100%; align-items:center; ;gap: 15rem;">
+          <label style="display:flex; align-items:center;">
+            <input type="checkbox" ${ing.is_done ? "checked" : ""} data-ing="${ing.name}">
+            <span style="margin-left:8px;">${ing.name}</span>
+          </label>
+          <span style="color:#555;">${ing.quantity}</span>
+        </div>
       `;
       ingredientsListEl.appendChild(li);
     });
@@ -102,6 +104,34 @@ export async function initIngredientsPage() {
         navigate("/preparation");
       }
     });
+    
+    // Reset button
+    const resetButton = document.querySelector(".btn-reset");
+    if (resetButton) {
+      resetButton.addEventListener("click", async () => {
+      
+        const confirmReset = confirm("Are you sure you want to reset all ingredients?");
+        if (!confirmReset) return; 
+      
+        // Uncheck all checkboxes in the DOM
+        const checkboxes = ingredientsListEl.querySelectorAll("input[type=checkbox]");
+        checkboxes.forEach(cb => cb.checked = false);
+      
+        // Update each ingredient in the database to false
+        for (let ing of data.ingredients) {
+          try {
+            await toggleIngredient(userId, recipeId, ing.name, false);
+          } catch (err) {
+            console.error(`Error resetting ingredient ${ing.name}:`, err);
+          }
+        }
+      
+        // Update COOK button state
+        updateCookButton();
+      
+        alert("Ingredients successfully reset");
+      });
+    }
 
   } catch (err) {
     console.error("Error loading recipe progress:", err);

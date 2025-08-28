@@ -22,27 +22,46 @@ export async function navigate(pathname) {
   const protectedRoutes = ["/listingredients", "/preparation"];
 
   if (protectedRoutes.includes(pathname) && !session) {
-    // alert("You must log in to access this page.");
-    document.getElementById("content").innerHTML = `
-      <h1 class="no-found">401 - Access denied</h1>
-      <p class="no-found">You must log in to access this page.</p>
-    `;
+    // Redirects directly to login
+    navigate("/signin");
 
+    // We wait for the login content to load
     setTimeout(() => {
-      navigate("/signin");
-    }, 3000);
-  return;
+      const loginSection = document.querySelector(".login");
+      if (loginSection) {
+        // Create the notice
+        const msg = document.createElement("div");
+        msg.className = "login-alert";
+        msg.innerText = "You must log in to access this page.";
+
+        // Insert before the form
+        loginSection.insertBefore(msg, loginSection.firstChild);
+
+        setTimeout(() => {
+          msg.remove();
+        }, 4000);
+      }
+    }, 50);
+    return;
   }
 
   // Blockage due to incomplete ingredients
   if (pathname === "/preparation" && localStorage.getItem("canGoToPreparation") !== "true") {
-    document.getElementById("content").innerHTML = `
-      <h1 class="no-found">401 - Access denied</h1>
-      <p class="no-found">You must complete all ingredients first.</p>
-    `;
+    // Redirects to the list of ingredients
+    navigate("/listingredients");
+
+    // We display a floating notice that disappears on its own
+    const msg = document.createElement("div");
+    msg.className = "toast-message";
+    msg.innerText = "You must complete all the ingredients before continuing with the preparation.";
+
+    document.body.appendChild(msg);
+
+    // Automatically removes in 4 seconds
     setTimeout(() => {
-      navigate("/listingredients");
-    }, 3000);
+      msg.remove();
+    }, 4000);
+
     return;
   }
 

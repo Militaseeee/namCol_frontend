@@ -5,6 +5,9 @@ const routes = {
   "/recipes": "./src/pages/recipes/index.html",
   "/signin": "./src/pages/login/index.html",
   "/signup": "./src/pages/sign_up/index.html",
+  "/profile": "./src/pages/profile/index.html",
+  "/forgot-password": "./src/pages/login/formFP.html",
+  "/reset-password": "./src/pages/login/formRP.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
   "/preparation": "./src/pages/preparation/index.html",
 };
@@ -12,13 +15,14 @@ const routes = {
 export async function navigate(pathname) {
   const route = routes[pathname];
   if (!route) {
-    document.getElementById("content").innerHTML = '<h1 class="no-found">404 - Page Not Found</h1>';
+    document.getElementById("content").innerHTML =
+      '<h1 class="no-found">404 - Page Not Found</h1>';
     return;
   }
 
   const session = getSession();
 
-   // Protected routes
+  // Protected routes
   const protectedRoutes = ["/listingredients", "/preparation"];
 
   if (protectedRoutes.includes(pathname) && !session) {
@@ -46,14 +50,18 @@ export async function navigate(pathname) {
   }
 
   // Blockage due to incomplete ingredients
-  if (pathname === "/preparation" && localStorage.getItem("canGoToPreparation") !== "true") {
+  if (
+    pathname === "/preparation" &&
+    localStorage.getItem("canGoToPreparation") !== "true"
+  ) {
     // Redirects to the list of ingredients
     navigate("/listingredients");
 
     // We display a floating notice that disappears on its own
     const msg = document.createElement("div");
     msg.className = "toast-message";
-    msg.innerText = "You must complete all the ingredients before continuing with the preparation.";
+    msg.innerText =
+      "You must complete all the ingredients before continuing with the preparation.";
 
     document.body.appendChild(msg);
 
@@ -65,49 +73,63 @@ export async function navigate(pathname) {
     return;
   }
 
-  const html = await fetch(route).then(res => res.text());
+  const html = await fetch(route).then((res) => res.text());
   document.getElementById("content").innerHTML = html;
+
+  const token = new URLSearchParams(window.location.search).get("token");
 
   history.pushState({}, "", pathname);
 
   if (session) {
     isAuthenticated();
-    if(pathname === "/signin" || pathname === "/signup") {
+    if (pathname === "/signin" || pathname === "/signup") {
       navigate("/");
     }
   }
 
   if (pathname === "/listingredients") {
-    import("./pages/list_ingredients/index.js").then(module => {
-      module.initIngredientsPage(); 
+    import("./pages/list_ingredients/index.js").then((module) => {
+      module.initIngredientsPage();
     });
   }
 
   if (pathname === "/recipes") {
-    import("./pages/recipes/index.js").then(module => {
+    import("./pages/recipes/index.js").then((module) => {
       module.initRecipesPage();
     });
   }
 
   if (pathname === "/signin") {
-    import("./pages/login/index.js").then(module => {
+    import("./pages/login/index.js").then((module) => {
       module.initLogin();
     });
   }
 
+  if (pathname === "/profile") {
+    import("./pages/profile/index.js").then((module) => {
+      module.initProfile();
+      module.logOut();
+      module.deleteAccount();
+    });
+  }
+
   if (pathname === "/forgot-password") {
-  import("./pages/login/index.js").then(module => {
-    module.initForgotPassword();
-  });
-}
+    import("./pages/login/index.js").then((module) => {
+      module.initForgotPassword();
+    });
+  }
 
   if (pathname === "/reset-password") {
-    console.log("reset-password page loaded");
-    import("./pages/login/index.js").then(module => {
+    import("./pages/login/index.js").then((module) => {
       module.initResetPassword(token);
     });
   }
-  
+
+  if (pathname === "/signup") {
+    import("./pages/sign_up/index.js").then((module) => {
+      module.initRegister();
+    });
+  }
 }
 
 // Support for clicks on links with data-links

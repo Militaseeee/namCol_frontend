@@ -1,0 +1,46 @@
+.profile{
+    padding: 3rem;
+}
+
+.header-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name-user{
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.buttons-profile{
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-delete-account{
+    background-color: rgb(247, 96, 96);
+    font-weight: 700;
+}
+
+.btn-log-out{
+    background-color: #FFC042;
+    font-weight: 700;
+}
+
+.recipes-user{
+    background-color: gainsboro;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.recipes-user h1 {
+    padding-bottom: 1rem;
+}
+
+.recipes-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}

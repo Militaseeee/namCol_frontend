@@ -1,0 +1,69 @@
+.register-page {
+    display: grid;
+    place-items: center;
+    padding: 2rem; 
+    background: #fff;
+}
+
+.register-page .form-container {
+    margin: 0;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    width: 100%;
+    max-width: 450px;
+}
+
+.form-container h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.form-container p {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: 1px solid #fcc12a;
+    font-size: 16px;
+}
+
+.submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFB800;
+    color: #000;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 60px;
+}
+
+.submit:hover {
+    background-color: #ff9c00;
+}
+
+.select2-container .select2-selection--single {
+    border-radius: 15px !important;
+    border: 1px solid #fcc12a !important;
+    font-size: 18px !important;
+    height: 40px !important;
+    margin-top: 5px !important;
+}  
+
+b {
+    margin-top: 5px !important;
+}

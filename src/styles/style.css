@@ -195,6 +195,7 @@ html, body {
   cursor: pointer;
   font-weight: 600;
   margin-bottom: 3rem;
+  margin-left: 2rem;
 }
 
 .btn-more:hover {

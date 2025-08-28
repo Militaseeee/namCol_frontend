@@ -6,6 +6,7 @@ const routes = {
   "/signin": "./src/pages/login/index.html",
   "/signup": "./src/pages/sign_up/index.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
+  "/preparation": "./src/pages/preparation/index.html",
 };
 
 export async function navigate(pathname) {
@@ -18,19 +19,31 @@ export async function navigate(pathname) {
   const session = getSession();
 
    // Protected routes
-  const protectedRoutes = ["/listingredients"];
+  const protectedRoutes = ["/listingredients", "/preparation"];
 
   if (protectedRoutes.includes(pathname) && !session) {
     // alert("You must log in to access this page.");
     document.getElementById("content").innerHTML = `
-    <h1 class="no-found">401 - Access denied</h1>
-    <p class="no-found">You must log in to access this page.</p>
-  `;
+      <h1 class="no-found">401 - Access denied</h1>
+      <p class="no-found">You must log in to access this page.</p>
+    `;
+
     setTimeout(() => {
       navigate("/signin");
     }, 3000);
-
   return;
+  }
+
+  // Blockage due to incomplete ingredients
+  if (pathname === "/preparation" && localStorage.getItem("canGoToPreparation") !== "true") {
+    document.getElementById("content").innerHTML = `
+      <h1 class="no-found">401 - Access denied</h1>
+      <p class="no-found">You must complete all ingredients first.</p>
+    `;
+    setTimeout(() => {
+      navigate("/listingredients");
+    }, 3000);
+    return;
   }
 
   const html = await fetch(route).then(res => res.text());
@@ -56,9 +69,23 @@ export async function navigate(pathname) {
       module.initRecipesPage();
     });
   }
+
   if (pathname === "/signin") {
     import("./pages/login/index.js").then(module => {
       module.initLogin();
+    });
+  }
+
+  if (pathname === "/forgot-password") {
+  import("./pages/login/index.js").then(module => {
+    module.initForgotPassword();
+  });
+}
+
+  if (pathname === "/reset-password") {
+    console.log("reset-password page loaded");
+    import("./pages/login/index.js").then(module => {
+      module.initResetPassword(token);
     });
   }
   

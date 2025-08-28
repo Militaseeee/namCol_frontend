@@ -88,6 +88,12 @@ export async function navigate(pathname) {
       navigate("/");
     }
   }
+
+  if (!session){
+    if (pathname === "/profile") {
+      navigate("/signin");
+    }
+  }
   
   if (pathname === "/listingredients") {
     import("./pages/list_ingredients/index.js").then((module) => {

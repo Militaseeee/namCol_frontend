@@ -49,7 +49,7 @@ export async function initIngredientsPage() {
     data.ingredients.forEach(ing => {
       const li = document.createElement("li");
       li.innerHTML = `
-        <div style="display:flex; justify-content:space-between; width:100%; align-items:center; ;gap: 15rem;">
+        <div class="ingredient-row">
           <label style="display:flex; align-items:center;">
             <input type="checkbox" ${ing.is_done ? "checked" : ""} data-ing="${ing.name}">
             <span style="margin-left:8px;">${ing.name}</span>

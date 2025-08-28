@@ -170,3 +170,56 @@ label:has(input[type="checkbox"]:checked) ~ span {
   margin-bottom: 15px;
   animation: fadeIn 0.3s ease-in-out;
 }
+
+.ingredient-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  gap: 15rem; /* desktop */
+}
+
+@media (max-width: 768px) {
+  .recipe-container {
+    flex-direction: column;
+    align-items: center;  
+    /* gap: 2rem; */
+    padding: 2rem 1rem;
+  }
+
+  .container-left, 
+  .container-right {
+    width: 100%;  
+  }
+
+  .container-left h3,
+  .recipe-paragraph {
+    max-width: 100%;
+  }
+
+  .container-left img {
+    max-width: 100%; 
+  }
+
+  .container-right h3,
+  .container-right span {
+    text-align: center;
+  }
+
+  .ingredients-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-cook,
+  .btn-reset {
+    width: 100%; 
+    text-align: center;
+  }
+
+
+  .ingredient-row {
+    gap: 0; 
+  }
+
+}

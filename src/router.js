@@ -130,6 +130,12 @@ export async function navigate(pathname) {
       module.initRegister();
     });
   }
+
+  if (pathname === "/preparation") {
+  import("./pages/preparation/index.js").then((module) => {
+    module.initPreparationPage();
+  });
+}
 }
 
 // Support for clicks on links with data-links

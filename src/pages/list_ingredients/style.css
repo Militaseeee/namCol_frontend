@@ -74,14 +74,14 @@
   margin-bottom: 1rem;
 }
 
-/* Span de la izquierda (nombre del ingrediente) */
+/* Left span (ingredient name) */
 .span-ingr-left {
   margin-left: 8px; 
   flex: 1;           
   text-align: left;  
 }
 
-/* Span de la derecha (cantidad) */
+/* Right span (quantity) */
 .span-ingr-right {
   width: 230px;
   margin-right: 8px; 

@@ -10,7 +10,7 @@ export async function initProfile() {
   try {
     const session = getSession(); 
     if (!session || !session.id_user) {
-      console.error("No hay sesión activa");
+      console.error("No active session");
       return;
     }
 
@@ -23,7 +23,7 @@ export async function initProfile() {
     renderRecipes(data);
 
   } catch (err) {
-    console.error("Error inicializando perfil:", err);
+    console.error("Error initializing profile:", err);
   }
 }
 
@@ -71,7 +71,7 @@ export function deleteAccount() {
 
     const session = getSession();
     if (!session || !session.id_user) {
-      console.error("No hay sesión activa");
+      console.error("No active session");
       return;
     }
 
@@ -82,7 +82,7 @@ export function deleteAccount() {
       logout();
       navigate("/");
     } catch (err) {
-      console.error("Error eliminando cuenta:", err);
+      console.error("Error deleting account:", err);
     }
   });
 }

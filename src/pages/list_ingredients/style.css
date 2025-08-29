@@ -74,7 +74,24 @@
   margin-bottom: 1rem;
 }
 
-.container-right span {
+/* Span de la izquierda (nombre del ingrediente) */
+.span-ingr-left {
+  margin-left: 8px; 
+  flex: 1;           
+  text-align: left;  
+}
+
+/* Span de la derecha (cantidad) */
+.span-ingr-right {
+  width: 230px;
+  margin-right: 8px; 
+  text-align: right;
+  /* white-space: nowrap;  */
+  font-size: 0.9rem;
+}
+
+.span-ingr-left
+.span-ingr-right {
   font-size: 0.9rem;
   color: #555;
   display: block;
@@ -106,7 +123,7 @@
   width: 18px;
   height: 18px;
   border: 3px solid #D9D9D9;
-  border-radius: 50%;       /* círculo */
+  border-radius: 50%;     
   margin-right: 10px;
   cursor: pointer;
   display: inline-block;
@@ -120,15 +137,15 @@
   border-color: #D9D9D9;
 }
 
-label input[type="checkbox"]:checked + span {
+label input[type="checkbox"]:checked + .span-ingr-left {
   text-decoration: line-through;
   text-decoration-color: #FFC042;
   text-decoration-thickness: 2px;
   color: inherit;
 }
 
-input[type="checkbox"]:checked ~ span,
-label:has(input[type="checkbox"]:checked) ~ span {
+input[type="checkbox"]:checked ~ .span-ingr-right,
+label:has(input[type="checkbox"]:checked) ~ .span-ingr-right {
   text-decoration: line-through;
   text-decoration-color: #FFC042;
   text-decoration-thickness: 3px;
@@ -176,8 +193,24 @@ label:has(input[type="checkbox"]:checked) ~ span {
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  gap: 15rem; /* desktop */
+  gap: 10rem; /* desktop */
 }
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #FFC042;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin: 4rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .recipe-container {
@@ -231,9 +264,11 @@ label:has(input[type="checkbox"]:checked) ~ span {
     max-width: 100%; 
   }
 
-  .container-right h3,
-  .container-right span {
+  .container-right h3 {
     text-align: center;
+  }
+  .span-ingr-right {
+    text-align: right;
   }
 
   .ingredients-header {
@@ -246,7 +281,6 @@ label:has(input[type="checkbox"]:checked) ~ span {
     width: 100%; 
     text-align: center;
   }
-
 
   .ingredient-row {
     gap: 0; 

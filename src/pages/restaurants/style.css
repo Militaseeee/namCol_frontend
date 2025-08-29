@@ -4,47 +4,78 @@
     box-sizing: border-box;
 }
 
+.restaurant-title {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 36px;
+}
+
 .restaurant {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.featured-recipes {
+.featured-restaurant {
   max-width: 1000px;
   margin: auto;
 }
 
-
-.recipe-grid {
+.restaurant-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   margin-bottom: 40px;
 }
 
-.recipe-card {
+.restaurant-card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  padding-bottom: 10px;
+  padding: 20px;
   transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 
-.recipe-card:hover {
+.restaurant-card:hover {
   transform: translateY(-5px);
 }
 
-.recipe-card img {
+.picture {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
   border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
 }
 
-.recipe-card p {
-  font-weight: bold;
-  margin: 10px 0 0 0;
-  text-transform: uppercase;
+.icon {
+  width: 2rem;
+  height: 2rem;
+  vertical-align: middle;
+  margin-right: 8px;
 }
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  font-weight: normal;
+  font-size: 13px;
+}
+
+
+
+a {
+  color: inherit; 
+  text-decoration: none;
+}
+
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+

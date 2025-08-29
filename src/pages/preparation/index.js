@@ -1,5 +1,7 @@
 import { getProgress } from "../../services/ingredientService.js";
 import { getSession } from "../../services/auth.js";
+import { completeRecipe } from "../../services/preparationService.js";
+import { showMessage } from '../../services/utils.js';
 
 export async function initPreparationPage() {
   const session = getSession();
@@ -19,7 +21,7 @@ export async function initPreparationPage() {
   const recipeId = recipe._id;
 
   try {
-    // Traemos los datos desde la API (incluye steps)
+    // We bring the data from the API (includes steps)
     const data = await getProgress(userId, recipeId);
 
     // DOM elements
@@ -28,12 +30,12 @@ export async function initPreparationPage() {
     const recipeDescEl = document.getElementById("recipeDescription");
     const stepsListEl = document.getElementById("preparation-steps");
 
-    // Render de info básica
+    // Basic info render
     recipeNameEl.textContent = data.recipe.title;
     recipeImgEl.src = data.recipe.image_url;
     recipeDescEl.textContent = data.recipe.description;
 
-    // Limpiamos lista de pasos
+    // We clean the list of steps
     stepsListEl.innerHTML = "";
 
     if (data.recipe.steps && data.recipe.steps.length > 0) {
@@ -49,6 +51,29 @@ export async function initPreparationPage() {
     } else {
       stepsListEl.innerHTML = "<p>No steps found for this recipe.</p>";
     }
+
+    document.getElementById("doneBtn").addEventListener("click", async () => {
+      const confirmFinish = confirm("Did you finish this recipe?");
+      if (!confirmFinish) return;
+
+      try {
+        const res = await completeRecipe(userId, recipeId);
+        if (res) {
+          const recipeContainer = document.querySelector(".principal");
+          if (recipeContainer) {
+            showMessage({
+                text: "Recipe completed! 🎉",
+                className: "alert-message",
+                parent: recipeContainer, 
+                duration: 4000,
+                color: "#4CAF50"
+            });
+          }
+        }
+      } catch (err) {
+        console.error("Error completing recipe:", err);
+      }
+    });
 
   } catch (err) {
     console.error("Error loading preparation steps:", err);

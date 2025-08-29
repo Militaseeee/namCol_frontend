@@ -1,15 +1,15 @@
 #preparation-steps {
-  list-style: none; /* quitamos numeración nativa */
+  list-style: none; /* we removed native numbering*/
   padding: 0;
   margin: 0;
 }
 
 .step-card {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   gap: 1rem;
   margin-bottom: 1rem;
-  background: #f9f9f9;
+  background: #FFE0A2;
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
@@ -17,17 +17,40 @@
 
 .step-number {
   width: 32px;
-  height: 32px;
-  background: #4caf50;
-  color: white;
-  border-radius: 50%;
+  /* height: 32px; */
+  color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  font-size: 3.5rem; 
 }
 
 .step-text {
   flex: 1;
-  color: #333;
+  display: flex;
+  color: #000000;
+  text-align: justify;
+  align-items: center;
 }
+
+#doneBtn {
+  background-color: #FFC042 !important; 
+  color: #000000;
+}
+
+.principal {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  #preparation-steps {
+    width: 100%;
+  }
+}  

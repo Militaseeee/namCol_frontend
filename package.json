@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/Militaseeee/namCol_frontend#readme",
   "devDependencies": {
-    "vite": "^7.1.3"
+    "vite": "^7.1.3",
+    "vite-plugin-static-copy": "^3.1.2"
   },
   "dependencies": {
     "dotenv": "^17.2.1"

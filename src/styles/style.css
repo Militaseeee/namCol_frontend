@@ -70,7 +70,7 @@ html, body {
 }
 
 .navbar nav a:hover {
-  text-decoration: underline;
+  transform:  scale(1.05) ;
 }
 
 .short-waves {
@@ -122,6 +122,7 @@ html, body {
 }
 
 .search-box input {
+  width: 100%;
   border: none;
   padding: 0.8rem 1rem;
   flex: 1;
@@ -304,6 +305,7 @@ html, body {
   }
   .hero {
     padding: 3rem 2rem;
+    justify-content: center;
   }
   .hero-text h1 {
     font-size: 2rem;
@@ -365,7 +367,7 @@ html, body {
 
   /* Search */
   .search-box {
-    max-width: 50%;
+    max-width: 60%;
     margin: 0.75rem auto 0;
   }
   .footer-container{

@@ -2,22 +2,26 @@ import { defineConfig } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig({
-  base: "./", // importante para que funcione en Vercel y GitHub Pages
-  build: {
-    outDir: "dist",
-  },
   plugins: [
     viteStaticCopy({
       targets: [
         {
-          src: "src/pages//*", // copiamos todas tus páginas
-          dest: "pages", // quedan en dist/pages
+          src: "src/assets//*", // copia TODO assets (imagenes, iconos, etc.)
+          dest: "assets", // se guarda en dist/assets
+        },
+        {
+          src: "src/pages//*", // copia todas las páginas HTML
+          dest: "pages", // se guarda en dist/pages
         },
       ],
     }),
   ],
+  build: {
+    outDir: "dist", // carpeta de salida del build
+    emptyOutDir: true,
+  },
   server: {
-    port: 5173,
-    open: true,
+    open: true, // abre automáticamente en el navegador
+    port: 5173, // puerto del dev server
   },
 });

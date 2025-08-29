@@ -1,6 +1,7 @@
 import { loginUser, forgotPassword, resetPassword } from "../../services/loginService.js";
 import { navigate } from "../../router.js";
-import { saveLocalStorage, saveSessionStorage} from "../../services/auth.js";
+import { saveLocalStorage, saveSessionStorage } from "../../services/auth.js";
+import { showMessage } from "../../services/utils.js";
 
 export function initLogin() {
   const form = document.getElementById("loginForm");
@@ -21,13 +22,18 @@ export function initLogin() {
       } else {
         saveSessionStorage(data.user);
       }
-
-      console.log("✅ " + data.message);
-
-      
       navigate("/");
     } else {
-      console.log("❌ " + (data.message || data.mensaje));
+      const element = document.querySelector(".login");
+      if (element) {
+        showMessage({
+          text: (data.message || data.mensaje),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#FE6A6D"
+        });
+      }
     }
   });
 }
@@ -44,15 +50,40 @@ export function initForgotPassword() {
     const { ok, data } = await forgotPassword(email);
 
     if (ok) {
-      console.log("✅ " + data.message);
-      navigate("/signin");
+      const element = document.querySelector(".login");
+
+      if (element) {
+        showMessage({
+          text: (data.message),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#4CAF50"
+        });
+      }
+
+      setTimeout(() => {
+        navigate("/signin");
+      }, 3000);
+
     } else {
-      console.log("❌ " + (data.message || data.mensaje));
+      const element = document.querySelector(".login");
+
+      if (element) {
+        showMessage({
+          text: (data.message || data.mensaje),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#FE6A6D"
+        });
+      }
+
     }
   });
 }
 
-export function initResetPassword(token){
+export function initResetPassword(token) {
   const form = document.getElementById("resetPassForm");
   if (!form) return;
 
@@ -62,24 +93,64 @@ export function initResetPassword(token){
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if(password !== confirmPassword){
-      console.log("❌ Las contraseñas no coinciden");
+    if (password !== confirmPassword) {
+      const element = document.querySelector(".login");
+      if (element) {
+        showMessage({
+          text: ("Passwords do not match"),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#FE6A6D"
+        });
+      }
       return;
     }
 
     if (!token) {
-      console.log("❌ Token no proporcionado");
+      const element = document.querySelector(".login");
+      if (element) {
+        showMessage({
+          text: ("Token not provided"),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#FE6A6D"
+        });
+      }
       return;
     }
 
     const { ok, data } = await resetPassword(token, password);
 
     if (ok) {
-      console.log("✅ " + data.message);
-      navigate("/signin");
-      console.log("✅ Contraseña restablecida con éxito");
+      const element = document.querySelector(".login");
+
+      if (element) {
+        showMessage({
+          text: ("Password successfully reset"),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#4CAF50"
+        });
+      }
+
+      setTimeout(() => {
+        navigate("/signin");
+      }, 3000);
     } else {
-      console.log("❌ " + (data.message || data.mensaje));
+       const element = document.querySelector(".login");
+
+      if (element) {
+        showMessage({
+          text: (data.message || data.mensaje),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#FE6A6D"
+        });
+      }
     }
   });
 }

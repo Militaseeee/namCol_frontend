@@ -40,15 +40,16 @@ export function isAuthenticated() {
     const btnSignin = document.getElementById("btnSignin");
     const btnSignup = document.getElementById("btnSignup");
     const nav = document.querySelector("nav");
-    const btnName = document.createElement("button");
+    const btnName = document.createElement("a");
     const name = getSession().name.toUpperCase();
 
     btnSignin.style.display = "none";
     btnSignup.style.display = "none";
 
-    btnName.classList.add("nav-button");
-    btnName.id = "btnNameButton";
-    btnName.innerHTML = `<a href="/profile" data-link id="btnName">${name}</a>`;
+    btnName.href = "/profile";
+    btnName.setAttribute("data-link", "");
+    btnName.id = "btnName";
+    btnName.innerHTML = `<button class="nav-button" id="btnNameButton">${name}</button>`;
     if (document.getElementById("btnNameButton")) return;
     nav.appendChild(btnName);
 }

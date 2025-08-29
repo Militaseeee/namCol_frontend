@@ -83,3 +83,9 @@
     transition: 0.2s all ease-in-out;
     cursor: pointer;
 }
+
+@media (max-width: 480px) {
+    .card-login{
+        padding: 2rem 1.5rem;
+    }
+}

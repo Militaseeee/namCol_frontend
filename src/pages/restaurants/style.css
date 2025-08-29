@@ -11,6 +11,7 @@
 }
 
 .restaurant {
+    width:80% ;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -23,7 +24,8 @@
 
 .restaurant-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 30px;
   margin-bottom: 40px;
 }
@@ -32,11 +34,13 @@
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  overflow: visible;
   padding: 20px;
   transition: transform 0.2s;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  
 }
 
 .restaurant-card:hover {
@@ -64,6 +68,7 @@
   margin: 8px 0;
   font-weight: normal;
   font-size: 13px;
+  
 }
 
 
@@ -77,5 +82,10 @@ a:visited,
 a:hover,
 a:active {
   color: inherit;
+}
+@media (max-width: 768px) {
+  .contact-info p {
+    font-size: 11px;
+  }
 }
 

@@ -17,6 +17,7 @@ const routes = {
 
 export async function navigate(pathname) {
   const route = routes[pathname];
+  const navbar = document.querySelector(".navbar");
   if (!route) {
     document.getElementById("content").innerHTML =
       '<h1 class="no-found">404 - Page Not Found</h1>';
@@ -89,6 +90,25 @@ export async function navigate(pathname) {
       navigate("/");
     }
   }
+  // short waves svg
+  const existingSvg = document.querySelector(".short-waves");
+  if (existingSvg) existingSvg.remove();
+
+  if (pathname === "/recipes" || pathname === "/listingredients" || pathname == "/restaurants" || pathname == "/preparation") {
+    const svgImg = document.createElement("img");
+    svgImg.draggable ="false"
+    svgImg.src = "./src/assets/Waves-short.svg"; 
+    svgImg.alt = "short waves";
+    svgImg.classList.add("short-waves");
+
+    navbar.appendChild( svgImg);
+  }
+
+  if (pathname === "/") {
+  import("./pages/home/index.js").then(module => {
+    module.initHomePage();
+  });
+}
 
   if (!session){
     if (pathname === "/profile") {

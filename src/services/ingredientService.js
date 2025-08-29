@@ -4,7 +4,7 @@ import { BASE_URL } from "./services";
 export async function getRecipes() {
     try {
         const res = await fetch(`${BASE_URL}/recipes`);
-        if (!res.ok) throw new Error("Error en el fetch");
+        if (!res.ok) throw new Error("Error in fetch");
         return res.json();
     } catch (err) {
         console.error("Error getRecipes:", err);

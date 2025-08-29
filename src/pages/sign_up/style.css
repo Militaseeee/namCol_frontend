@@ -1,7 +1,4 @@
 .register-page {
-    display: grid;
-    place-items: center;
-    padding: 2rem; 
     background: #fff;
 }
 
@@ -59,11 +56,15 @@
 .select2-container .select2-selection--single {
     border-radius: 15px !important;
     border: 1px solid #fcc12a !important;
-    font-size: 18px !important;
-    height: 40px !important;
+    font-size: 1rem !important;
+    height: 50px !important;
     margin-top: 5px !important;
+    align-content: space-around;
+    text-align: start;
 }  
-
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 40px !important;
+}
 b {
     margin-top: 5px !important;
 }

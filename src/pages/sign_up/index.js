@@ -1,5 +1,6 @@
 import { signupUser } from "../../services/signupService.js";
 import { navigate } from "../../router.js";
+import { showMessage } from "../../services/utils.js";
 
 async function loadCountries() {
   try {
@@ -66,39 +67,93 @@ export function initRegister() {
 
     const namePattern = /^[A-Za-z\s]+$/;
     if (!namePattern.test(fullName)) {
-      alert("The full name should only contain letters and spaces.");
+      const element = document.querySelector(".register-page");
+      if (element) {
+        showMessage({
+          text: ("The full name should only contain letters and spaces."),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#FE6A6D"
+        });
+      }
       return;
     }
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailPattern.test(email)) {
-      alert("Please enter a valid email address.");
+      const element = document.querySelector(".register-page");
+      if (element) {
+        showMessage({
+          text: ("Please enter a valid email address."),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#FE6A6D"
+        });
+      }
       return;
     }
 
     const passwordPattern =
       /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_\-])[A-Za-z\d!@#$%^&*_\-]{6,}$/;
-      if (!passwordPattern.test(password)) {
-      alert(
-        "The password must have at least 6 characters, one capital letter, one number and one special character."
-      );
+    if (!passwordPattern.test(password)) {
+      const element = document.querySelector(".register-page");
+      if (element) {
+        showMessage({
+          text: ("The password must have at least 6 characters, one capital letter, one number and one special character."),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#FE6A6D"
+        });
+      }
       return;
     }
 
     if (country === "") {
-      alert("Please select your country.");
+      const element = document.querySelector(".register-page");
+      if (element) {
+        showMessage({
+          text: ("Please select your country."),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#FE6A6D"
+        });
+      }
       return;
     }
 
     const { ok, data } = await signupUser(fullName, email, password, country);
 
     if (ok) {
-      console.log("✅ " + data.message);
-      alert("✅ Form submitted successfully");
+      const element = document.querySelector(".register-page");
 
-      navigate("/signin");
+      if (element) {
+        showMessage({
+          text: (data.message),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#4CAF50"
+        });
+      }
+
+      setTimeout(() => {
+        navigate("/signin");
+      }, 3000);
     } else {
-      console.log("❌ " + (data.message || data.mensaje));
+      const element = document.querySelector(".register-page");
+      if (element) {
+        showMessage({
+          text: (data.message || data.mensaje),
+          className: "alert-message",
+          parent: element,
+          duration: 4000,
+          color: "#FE6A6D"
+        });
+      }
     }
   });
 }

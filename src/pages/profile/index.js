@@ -97,6 +97,6 @@ function addRecipeClickEvent() {
 
 function goToRecipeSelected(card) {
   const recipe = JSON.parse(card.dataset.recipe);
-  localStorage.setItem("selectedRecipeHistory", JSON.stringify(recipe));
+  localStorage.setItem("selectedRecipe", JSON.stringify(recipe));
   navigate("/listingredients");
 }

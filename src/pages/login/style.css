@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.login {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    margin-top: 3rem;
+    padding: 0 2rem;
+}
+
+.card-login {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 20px;
+    padding: 2rem 4rem;
+    width: 100%;
+    max-width: 33rem;
+    margin: 0 2rem;
+}
+
+.header-login h1 {
+    font-size: 2rem;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    gap: 1.5rem;
+}
+
+.inputs input{
+    font-family: "Poppins", sans-serif;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: 2px solid #FFC042;
+    font-size: 1rem;
+}
+
+.botton-login{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.remember-me{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+  accent-color: #FFC042;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.botton-login a{
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+}
+
+.btn-login{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-radius: 0.7rem;
+    border: none;
+    background-color: #FFC042;
+    font-family: "Poppins", sans-serif;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.btn-login:hover{
+    background-color: #f0ba4e;
+    scale: 1.02;
+    transition: 0.2s all ease-in-out;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .card-login{
+        padding: 2rem 1.5rem;
+    }
+}

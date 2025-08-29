@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.restaurant-title {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 36px;
+}
+
+.restaurant {
+    width:80% ;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.featured-restaurant {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.restaurant-grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.restaurant-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: visible;
+  padding: 20px;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+}
+
+.picture {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  font-weight: normal;
+  font-size: 13px;
+  
+}
+
+
+
+a {
+  color: inherit; 
+  text-decoration: none;
+}
+
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+@media (max-width: 768px) {
+  .contact-info p {
+    font-size: 11px;
+  }
+}
+

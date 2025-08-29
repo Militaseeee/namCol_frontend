@@ -1,65 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 /* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   color: #333;
   line-height: 1.5;
 }
+html, body {
+  height: 100%;
+}
 
+#content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 /* ---------------- NAVBAR ---------------- */
-.navbar {
+.navbar-wrapper{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 3rem;
-  background-color: #FFC042; /* Amarillo de la landing */
+  padding: 1.5rem 3rem;
+  background-color: #FFC042;
+  flex-wrap: wrap; 
 }
+
 
 .navbar .logo {
   font-size: 1.8rem;
   font-weight: bold;
   color: #fff;
 }
-.nav-button{
-    display: flex;
-    width: 20%;
-    height: 4.5vh;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 15px;
-    border: none;
-    margin-left: 1.5rem;
-    
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 15px;
+  border: none;
+  margin: 0.3rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem; 
+  font-weight: bold;
 }
+
 .navbar nav {
-    display: flex;
-    width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  width: auto;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
+
 .navbar nav a {
   text-decoration: none;
   color: black;
-  font-weight: 500;
+  font-weight: bold;
+  flex-wrap: wrap;
 }
 
 .navbar nav a:hover {
-  text-decoration: underline;
+  transform:  scale(1.05) ;
 }
 
+.short-waves {
+  position: sticky;
+  top: 70px; 
+  z-index: 999;
+  display: block;
+  margin: 0 auto;  
+  width: 100%;      
+  height: auto;
+  pointer-events: none; 
+}
 /* ---------------- HERO ---------------- */
 .hero {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   padding: 4rem 3rem;
-  background-color: #FFC042; /* Amarillo */
+  background-color: #FFC042; 
+  gap: 1rem;
+  flex-wrap: wrap;
 }
+
 
 .hero-text {
   max-width: 50%;
@@ -71,9 +105,12 @@ body {
   margin-bottom: 1.5rem;
   color: #000;
 }
-#black-logo{
-    width: 35vw;
+#black-logo {
+  max-width: 500px; 
+  width: 100%;
+  height: auto;
 }
+
 .search-box {
   display: flex;
   align-items: center;
@@ -81,10 +118,11 @@ body {
   border-radius: 25px;
   overflow: hidden;
   width: 100%;
-  max-width: 350px;
+  max-width: 500px;
 }
 
 .search-box input {
+  width: 100%;
   border: none;
   padding: 0.8rem 1rem;
   flex: 1;
@@ -99,9 +137,12 @@ body {
   cursor: pointer;
 }
 
+
 .hero-img img {
+  width: 100%;
   max-width: 500px;
   height: auto;
+  object-fit: contain;
 }
 
 /* ---------------- FEATURED RECIPES ---------------- */
@@ -115,11 +156,13 @@ body {
   margin-bottom: 2rem;
 }
 
+
 .recipe-cards {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 10rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -128,7 +171,10 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
   width: 250px;
+  /* max-width: 45%; */
+  min-width: 180px;
   transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -143,7 +189,7 @@ body {
 
 .card p {
   padding: 1rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .btn-more {
@@ -154,10 +200,41 @@ body {
   border-radius: 20px;
   cursor: pointer;
   font-weight: 600;
+  margin-bottom: 3rem;
+  margin-left: 2rem;
+}
+.btn-more a{
+  color: black;
+  text-decoration: none;
+}
+.btn-more:hover {
+  background: #e8a929 !important;
 }
 
-.btn-more:hover {
-  background: #e6a82f;
+
+.benefits {
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-start;         
+  gap: 2rem;                       
+  max-width: 1100px;               
+  margin: 0 auto;                  
+  padding: 3rem 1rem;              
+}
+.benefits div{
+  flex: 1 1 30%;                   
+  display: flex;
+  flex-direction: column;          
+  align-items: center;             
+  text-align: center;            
+  gap: 0.75rem;                    
+}
+.benefits div img{
+  max-width: 100px;
+}
+.benefits div p{
+  font-weight: 800;
+  max-width: 280px;
 }
 
 /* ---------------- FOOTER ---------------- */
@@ -177,16 +254,17 @@ body {
 
 .footer p {
   font-size: 0.9rem;
-  color: #555;
+  color: #3F3F3F;
 }
 .footer-nav{
     display: flex;
+    
 }
 .footer-nav a {
   margin-left: 1.5rem;
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
+  color: #3F3F3F;
+  font-weight: bold;
 }
 
 .footer-nav a:hover {
@@ -198,8 +276,147 @@ body {
     justify-content: center;
 }
 .footer-logos{
-    width: 6vh;
-    height: 4vh;
-    margin-top: 1%;
-    margin-left: 2%;
+    width: 5vh;
+    height: 5vh;
+    color: #3F3F3F;
+}
+
+.footer-links{
+  margin-top: 1%;
+  margin-left: 2%;
+}
+
+.no-found {
+  text-align: center;
+  padding-top: 2rem;
+}
+.navbar, footer, .short-waves{
+  -webkit-user-select: none;
+  -moz-user-select: none;   
+  -ms-user-select: none;    
+  user-select: none;         
+}
+
+/*Responsive*/
+/* Tablet  */
+@media (max-width: 1024px) {
+  .search-box{
+    max-width: 350px;
+  }
+  .hero {
+    padding: 3rem 2rem;
+    justify-content: center;
+  }
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  #black-logo {
+    max-width: 140px;
+  }
+  .card {
+    max-width: 220px;
+  }
+  h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+}
+
+/* phones */
+@media (max-width: 768px) {
+  .navbar {
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar .logo {
+    order: 1;
+  }
+  .navbar nav {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  .navbar-wrapper{
+    justify-content: center;
+  }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .hero-text {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+  .hero-text h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+  .hero-img {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-img img {
+    max-width: 350px;
+  }
+
+  /* Search */
+  .search-box {
+    max-width: 60%;
+    margin: 0.75rem auto 0;
+  }
+  .footer-container{
+    margin-bottom: 2rem;
+  }
+  .benefits{
+    flex-wrap: wrap;
+  }
+
+}
+
+/* small phones */
+@media (max-width: 480px) {
+  .search-box{
+    max-width: 80%;
+  }
+  .search-box input{
+    width: 80%;
+  }
+  .nav-button {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .hero-text h1 {
+    font-size: 1.4rem;
+  }
+  .card img {
+    height: 120px;
+  }
+  .benefits{
+    justify-content: center;
+  }
+  .benefits div img{
+    max-width: 60px;
+  }
+  .recipe-cards{
+    gap: 5rem;
+    margin-bottom: 4rem;
+  }
+  
+  .footer-logos-container {
+    gap: 1rem;
+  }
+  .footer-nav{
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .footer-nav a{
+    margin-left: 0;
+  }
 }

@@ -5,64 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ÑamCol - Recipes</title>
   <link rel="stylesheet" href="./src/styles/style.css">
+  <link rel="stylesheet" href="./src/pages/login/style.css">
+  <link rel="stylesheet" href="./src/pages/sign_up/style.css">
+  <link rel="stylesheet" href="./src/pages/profile/style.css">
+  <link rel="stylesheet" href="./src/pages/recipes/style.css">
+  <link rel="stylesheet" href="./src/pages/list_ingredients/style.css">
+  <link rel="stylesheet" href="./src/pages/restaurants/style.css">
+  <link rel="stylesheet" href="./src/pages/preparation/style.css">
+  <link rel="stylesheet" href="./src/pages/contact/style.css">
+  <link rel="stylesheet" href="./src/pages/about/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body>
 
   <!-- Navbar -->
-  <header class="navbar">
-    <img class="logo" src="./src/assets/logo ñamcol largo black 1.png">
-    <img  alt="">
-    <nav>
-      <button class="nav-button">
-          <a href="/recipes" data-link>RECIPES</a>
-      </button>
-      <button class="nav-button">
-          <a href="/signin" data-link>SIGN IN</a>
-      </button>
-      <button class="nav-button">
-          <a href="/signup" data-link>SIGN UP</a>
-      </button>
-      
-      
-    </nav>
+  <header class="navbar"  draggable="false">
+    <div class="navbar-wrapper">
+      <a href="/">
+        <img class="logo" src="./src/assets/logo ñamcol largo black 1.png"  draggable="false">
+      </a>
+      <nav>
+        <a href="/recipes" data-link>
+          <button class="nav-button" id="btnRecipes">
+              RECIPES
+          </button>
+        </a>
+        <a href="/signin" data-link>
+          <button class="nav-button" id="btnSignin">
+            SIGN IN
+          </button>
+        </a>
+        <a href="/signup" data-link>
+          <button class="nav-button" id="btnSignup">
+              SIGN UP
+          </button>
+        </a>
+      </nav>
+    </div>
   </header>
 
   <!-- Main Content -->
   <main id="content">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-img">
-        <img src="./src/assets/food-bag.png" id="img-food-bag" alt="Food bag">
-      </div>
-      <div class="hero-text">
-        <h1>COOK, ENJOY... AND SAY <img src="./src/assets/ñam-black.png" alt="black logo" id="black-logo"></h1>
-        <div class="search-box">
-          <input type="text" placeholder="Search recipe">
-          <button>🔍</button>
-        </div>
-      </div>
-    </section>
-    <img src="./src/assets/Waves.svg" alt="waves" style="width: 100%;">
-
-    <!-- Featured Recipes -->
-    <section class="recipes">
-      <h2>FEATURED RECIPES</h2>
-      <div class="recipe-cards">
-        <div class="card">
-          <img src="./src/assets/bandeja-paisa.jpg" alt="Bandeja Paisa">
-          <p>Bandeja Paisa</p>
-        </div>
-        <div class="card">
-          <img src="./src/assets/ajiaco.jpg" alt="Ajiaco">
-          <p>Ajiaco</p>
-        </div>
-        <div class="card">
-          <img src="./src/assets/arroz-coco.jpg" alt="Arroz con coco">
-          <p>Arroz de coco</p>
-        </div>
-      </div>
-      <button class="btn-more"><strong>DISCOVER MORE RECIPES</strong></button>
-    </section>
+    
   </main>
 
   <!-- Footer -->
@@ -73,16 +57,23 @@
         <a href="/recipes" data-link>Recipes</a>
         <a href="/signin" data-link>Sign In</a>
         <a href="/signup" data-link>Sign Up</a>
-        <a href="/signin" data-link>About us</a>
-        <a href="/signup" data-link>Contact</a>
+        <a href="/about" data-link>About Us</a>
+        <a href="/contact" data-link>Contact</a>
         </nav>
     </div>
     <div class="footer-logos-container">
-      <img src="./src/assets/github-logo.png" alt="logo github" class="footer-logos">
-      <img src="./src/assets/instagram-logo.png" alt="instagram logo" class="footer-logos">
+      <a href="https://github.com/Militaseeee/namCol_frontend/tree/main" class="footer-links">
+        <img src="./src/assets/github-logo-gris.png" alt="logo github" class="footer-logos">
+      </a>
+      <a href="https://www.instagram.com/riwi.io/" class="footer-links">
+        <img src="./src/assets/instagram-logo-gris.png.png" alt="instagram logo" class="footer-logos">
+      </a>
     </div>
     </footer>
 
-  <script src="./src/router.js"></script>
+  <script type="module" src="./src/router.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 </body>
 </html>

@@ -25,17 +25,15 @@ html, body {
   flex-direction: column;
 }
 /* ---------------- NAVBAR ---------------- */
-.navbar {
+.navbar-wrapper{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 3rem;
   background-color: #FFC042;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   flex-wrap: wrap; 
 }
+
 
 .navbar .logo {
   font-size: 1.8rem;
@@ -53,7 +51,7 @@ html, body {
   margin: 0.3rem;
   cursor: pointer;
   padding: 0.5rem 1rem; 
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .navbar nav {
@@ -75,6 +73,16 @@ html, body {
   text-decoration: underline;
 }
 
+.short-waves {
+  position: sticky;
+  top: 70px; 
+  z-index: 999;
+  display: block;
+  margin: 0 auto;  
+  width: 100%;      
+  height: auto;
+  pointer-events: none; 
+}
 /* ---------------- HERO ---------------- */
 .hero {
   display: flex;
@@ -98,7 +106,7 @@ html, body {
   color: #000;
 }
 #black-logo {
-  max-width: 500px; /* controlado y responsive */
+  max-width: 500px; 
   width: 100%;
   height: auto;
 }
@@ -128,14 +136,10 @@ html, body {
   cursor: pointer;
 }
 
-/* .hero-img img {
-  max-width: 500px;
-  height: auto;
-} */
 
 .hero-img img {
   width: 100%;
-  max-width: 500px; /* no más grande que esto */
+  max-width: 500px;
   height: auto;
   object-fit: contain;
 }
@@ -166,9 +170,10 @@ html, body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
   width: 250px;
-  max-width: 45%;
+  /* max-width: 45%; */
   min-width: 180px;
   transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -195,32 +200,33 @@ html, body {
   cursor: pointer;
   font-weight: 600;
   margin-bottom: 3rem;
+  margin-left: 2rem;
 }
-
+.btn-more a{
+  color: black;
+  text-decoration: none;
+}
 .btn-more:hover {
-  background: #e6a82f;
+  background: #e8a929 !important;
 }
 
-/* .benefits{
-  display: flex;
-  justify-content: space-between;
-} */
+
 .benefits {
   display: flex;
-  justify-content: space-between; /* espacio entre columnas controlado */
-  align-items: flex-start;         /* alinear elementos por arriba */
-  gap: 2rem;                       /* separación consistente */
-  max-width: 1100px;               /* contenedor centralizado */
-  margin: 0 auto;                  /* centrar la sección en la página */
-  padding: 3rem 1rem;              /* espacio interior */
+  justify-content: space-between; 
+  align-items: flex-start;         
+  gap: 2rem;                       
+  max-width: 1100px;               
+  margin: 0 auto;                  
+  padding: 3rem 1rem;              
 }
 .benefits div{
-  flex: 1 1 30%;                   /* cada columna toma ~30% del ancho, pero es flexible */
+  flex: 1 1 30%;                   
   display: flex;
-  flex-direction: column;          /* apilar imagen arriba y texto abajo */
-  align-items: center;             /* CENTRAR la imagen horizontalmente */
-  text-align: center;              /* CENTRAR el texto */
-  gap: 0.75rem;                    /* separación entre imagen y texto */
+  flex-direction: column;          
+  align-items: center;             
+  text-align: center;            
+  gap: 0.75rem;                    
 }
 .benefits div img{
   max-width: 100px;
@@ -283,10 +289,15 @@ html, body {
   text-align: center;
   padding-top: 2rem;
 }
-
+.navbar, footer, .short-waves{
+  -webkit-user-select: none;
+  -moz-user-select: none;   
+  -ms-user-select: none;    
+  user-select: none;         
+}
 
 /*Responsive*/
-/* Tablet / pantallas medianas */
+/* Tablet  */
 @media (max-width: 1024px) {
   .search-box{
     max-width: 350px;
@@ -310,11 +321,9 @@ html, body {
 }
 }
 
-/* Móvil / phones */
+/* phones */
 @media (max-width: 768px) {
-  /* Navbar: logo arriba, links abajo centrados */
   .navbar {
-    padding: 1rem 1.2rem;
     align-items: center;
     justify-content: center;
   }
@@ -328,7 +337,6 @@ html, body {
     margin-top: 0.5rem;
   }
 
-  /* Hero: apilar verticalmente */
   .hero {
     flex-direction: column;
     text-align: center;
@@ -364,7 +372,7 @@ html, body {
 
 }
 
-/* Pequeños teléfonos */
+/* small phones */
 @media (max-width: 480px) {
   .search-box{
     max-width: 80%;

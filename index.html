@@ -10,29 +10,38 @@
   <link rel="stylesheet" href="./src/pages/profile/style.css">
   <link rel="stylesheet" href="./src/pages/recipes/style.css">
   <link rel="stylesheet" href="./src/pages/list_ingredients/style.css">
+  <link rel="stylesheet" href="./src/pages/restaurants/style.css">
   <link rel="stylesheet" href="./src/pages/preparation/style.css">
+  <link rel="stylesheet" href="./src/pages/contact/style.css">
+  <link rel="stylesheet" href="./src/pages/about/style.css">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body>
 
   <!-- Navbar -->
-  <header class="navbar">
-    <a href="/">
-      <img class="logo" src="./src/assets/logo ñamcol largo black 1.png">
-    </a>
-    <nav>
-      <button class="nav-button" id="btnRecipes">
-          <a href="/recipes" data-link>RECIPES</a>
-      </button>
-      <button class="nav-button" id="btnSignin">
-          <a href="/signin" data-link>SIGN IN</a>
-      </button>
-      <button class="nav-button" id="btnSignup">
-          <a href="/signup" data-link>SIGN UP</a>
-      </button>
-      
-      
-    </nav>
+  <header class="navbar"  draggable="false">
+    <div class="navbar-wrapper">
+      <a href="/">
+        <img class="logo" src="./src/assets/logo ñamcol largo black 1.png"  draggable="false">
+      </a>
+      <nav>
+        <a href="/recipes" data-link>
+          <button class="nav-button" id="btnRecipes">
+              RECIPES
+          </button>
+        </a>
+        <a href="/signin" data-link>
+          <button class="nav-button" id="btnSignin">
+            SIGN IN
+          </button>
+        </a>
+        <a href="/signup" data-link>
+          <button class="nav-button" id="btnSignup">
+              SIGN UP
+          </button>
+        </a>
+      </nav>
+    </div>
   </header>
 
   <!-- Main Content -->
@@ -48,8 +57,8 @@
         <a href="/recipes" data-link>Recipes</a>
         <a href="/signin" data-link>Sign In</a>
         <a href="/signup" data-link>Sign Up</a>
-        <a href="/signin" data-link>About Us</a>
-        <a href="/signup" data-link>Contact</a>
+        <a href="/about" data-link>About Us</a>
+        <a href="/contact" data-link>Contact</a>
         </nav>
     </div>
     <div class="footer-logos-container">

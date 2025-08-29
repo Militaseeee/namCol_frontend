@@ -10,11 +10,15 @@ const routes = {
   "/forgot-password": "./src/pages/login/formFP.html",
   "/reset-password": "./src/pages/login/formRP.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
+  "/restaurants": "./src/pages/restaurants/index.html",
+  "/contact": "./src/pages/contact/index.html",
+  "/about": "./src/pages/about/index.html",
   "/preparation": "./src/pages/preparation/index.html",
 };
 
 export async function navigate(pathname) {
   const route = routes[pathname];
+  const navbar = document.querySelector(".navbar");
   if (!route) {
     document.getElementById("content").innerHTML =
       '<h1 class="no-found">404 - Page Not Found</h1>';
@@ -78,7 +82,32 @@ export async function navigate(pathname) {
       navigate("/");
     }
   }
+  // short waves svg
+  const existingSvg = document.querySelector(".short-waves");
+  if (existingSvg) existingSvg.remove();
 
+  if (pathname === "/recipes" || pathname === "/listingredients" || pathname == "/restaurants" || pathname == "/preparation") {
+    const svgImg = document.createElement("img");
+    svgImg.draggable ="false"
+    svgImg.src = "./src/assets/Waves-short.svg"; 
+    svgImg.alt = "short waves";
+    svgImg.classList.add("short-waves");
+
+    navbar.appendChild( svgImg);
+  }
+
+  if (pathname === "/") {
+  import("./pages/home/index.js").then(module => {
+    module.initHomePage();
+  });
+}
+
+  if (!session){
+    if (pathname === "/profile") {
+      navigate("/signin");
+    }
+  }
+  
   if (pathname === "/listingredients") {
     import("./pages/list_ingredients/index.js").then((module) => {
       module.initIngredientsPage();
@@ -90,7 +119,17 @@ export async function navigate(pathname) {
       module.initRecipesPage();
     });
   }
+  
+  if (pathname === "/contact") {
+    import("./pages/contact/index.js");
+  }
 
+  if (pathname === "/about") {
+    import("./pages/about/index.js").then(module => {
+      module.initAbout();
+    });
+  }
+  
   if (pathname === "/signin") {
     import("./pages/login/index.js").then((module) => {
       module.initLogin();

@@ -2,18 +2,18 @@ import { getSession, isAuthenticated } from "./services/auth.js";
 import { showMessage } from "./services/utils.js";
 
 const routes = {
-  "/": "./src/pages/home/index.html",
-  "/recipes": "./src/pages/recipes/index.html",
-  "/signin": "./src/pages/login/index.html",
-  "/signup": "./src/pages/sign_up/index.html",
-  "/profile": "./src/pages/profile/index.html",
-  "/forgot-password": "./src/pages/login/formFP.html",
-  "/reset-password": "./src/pages/login/formRP.html",
-  "/listingredients": "./src/pages/list_ingredients/index.html",
-  "/restaurants": "./src/pages/restaurants/index.html",
-  "/contact": "./src/pages/contact/index.html",
-  "/about": "./src/pages/about/index.html",
-  "/preparation": "./src/pages/preparation/index.html",
+  "/": "./pages/home/index.html",
+  "/recipes": "./pages/recipes/index.html",
+  "/signin": "./pages/login/index.html",
+  "/signup": "./pages/sign_up/index.html",
+  "/profile": "./pages/profile/index.html",
+  "/forgot-password": "./pages/login/formFP.html",
+  "/reset-password": "./pages/login/formRP.html",
+  "/listingredients": "./pages/list_ingredients/index.html",
+  "/restaurants": "./pages/restaurants/index.html",
+  "/contact": "./pages/contact/index.html",
+  "/about": "./pages/about/index.html",
+  "/preparation": "./pages/preparation/index.html",
 };
 
 export async function navigate(pathname) {

@@ -1,5 +1,5 @@
 import { getSession, isAuthenticated } from "./services/auth.js";
-import { showMessage } from './services/utils.js';
+import { showMessage } from "./services/utils.js";
 
 const routes = {
   "/": "./src/pages/home/index.html",
@@ -38,12 +38,12 @@ export async function navigate(pathname) {
     setTimeout(() => {
       const loginSection = document.querySelector(".login");
       if (loginSection) {
-        showMessage({ 
+        showMessage({
           text: "You must log in to access this page.",
           className: "alert-message",
           parent: loginSection,
           color: "#FE6A6D",
-          duration: 4000
+          duration: 4000,
         });
       }
     }, 50);
@@ -63,7 +63,7 @@ export async function navigate(pathname) {
       className: "toast-message",
       parent: document.body,
       duration: 4000,
-      color: "#FE6A6D" 
+      color: "#FE6A6D",
     });
 
     return;
@@ -86,28 +86,34 @@ export async function navigate(pathname) {
   const existingSvg = document.querySelector(".short-waves");
   if (existingSvg) existingSvg.remove();
 
-  if (pathname === "/recipes" || pathname === "/listingredients" || pathname == "/restaurants" || pathname == "/preparation") {
+  if (
+    pathname === "/recipes" ||
+    pathname === "/listingredients" ||
+    pathname == "/restaurants" ||
+    pathname == "/preparation" ||
+    pathname == "/profile"
+  ) {
     const svgImg = document.createElement("img");
-    svgImg.draggable ="false"
-    svgImg.src = "./src/assets/Waves-short.svg"; 
+    svgImg.draggable = "false";
+    svgImg.src = "./src/assets/Waves-short.svg";
     svgImg.alt = "short waves";
     svgImg.classList.add("short-waves");
 
-    navbar.appendChild( svgImg);
+    navbar.appendChild(svgImg);
   }
 
   if (pathname === "/") {
-  import("./pages/home/index.js").then(module => {
-    module.initHomePage();
-  });
-}
+    import("./pages/home/index.js").then((module) => {
+      module.initHomePage();
+    });
+  }
 
-  if (!session){
+  if (!session) {
     if (pathname === "/profile") {
       navigate("/signin");
     }
   }
-  
+
   if (pathname === "/listingredients") {
     import("./pages/list_ingredients/index.js").then((module) => {
       module.initIngredientsPage();
@@ -119,17 +125,17 @@ export async function navigate(pathname) {
       module.initRecipesPage();
     });
   }
-  
+
   if (pathname === "/contact") {
     import("./pages/contact/index.js");
   }
 
   if (pathname === "/about") {
-    import("./pages/about/index.js").then(module => {
+    import("./pages/about/index.js").then((module) => {
       module.initAbout();
     });
   }
-  
+
   if (pathname === "/signin") {
     import("./pages/login/index.js").then((module) => {
       module.initLogin();
@@ -163,10 +169,10 @@ export async function navigate(pathname) {
   }
 
   if (pathname === "/preparation") {
-  import("./pages/preparation/index.js").then((module) => {
-    module.initPreparationPage();
-  });
-}
+    import("./pages/preparation/index.js").then((module) => {
+      module.initPreparationPage();
+    });
+  }
 }
 
 // Support for clicks on links with data-links

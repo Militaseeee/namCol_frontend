@@ -86,7 +86,7 @@ html, body {
 /* ---------------- HERO ---------------- */
 .hero {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   padding: 4rem 3rem;
   background-color: #FFC042; 
@@ -336,7 +336,9 @@ html, body {
     justify-content: center;
     margin-top: 0.5rem;
   }
-
+  .navbar-wrapper{
+    justify-content: center;
+  }
   .hero {
     flex-direction: column;
     text-align: center;
@@ -358,7 +360,7 @@ html, body {
     justify-content: center;
   }
   .hero-img img {
-    max-width: 260px;
+    max-width: 350px;
   }
 
   /* Search */
@@ -369,6 +371,9 @@ html, body {
   .footer-container{
     margin-bottom: 2rem;
   }
+  .benefits{
+    flex-wrap: wrap;
+  }
 
 }
 
@@ -376,6 +381,9 @@ html, body {
 @media (max-width: 480px) {
   .search-box{
     max-width: 80%;
+  }
+  .search-box input{
+    width: 80%;
   }
   .nav-button {
     padding: 0.35rem 0.8rem;

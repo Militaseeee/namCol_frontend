@@ -1,46 +1,79 @@
-.profile{
-    padding: 3rem;
+.profile {
+  padding: 3rem;
 }
 
 .header-profile {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.name-user{
-    font-size: 2rem;
-    font-weight: 800;
+.name-user {
+  font-size: 2rem;
+  font-weight: 800;
 }
 
-.buttons-profile{
-    display: flex;
-    gap: 1rem;
+.buttons-profile {
+  display: flex;
+  gap: 1rem;
 }
 
-.btn-delete-account{
-    background-color: rgb(247, 96, 96);
-    font-weight: 700;
+.btn-delete-account {
+  background-color: rgb(247, 96, 96);
+  font-weight: 700;
 }
 
-.btn-log-out{
-    background-color: #FFC042;
-    font-weight: 700;
+.btn-log-out {
+  background-color: #ffc042;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.recipes-user{
-    background-color: gainsboro;
-    border-radius: 20px;
-    padding: 2rem;
-    margin: 2rem 0;
+.recipes-user {
+  background-color: gainsboro;
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem 0;
 }
 
 .recipes-user h1 {
-    padding-bottom: 1rem;
+  padding-bottom: 1rem;
+  margin-left: 0;
 }
 
-.recipes-grid {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+.recipes-grid-profile {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-items: center;
+}
+
+@media (max-width: 1024px) {
+  .recipes-user h1 {
+    align-items: flex-start;
+    margin-left: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .recipes-user h1 {
+    align-items: center;
+    text-align: center;
+    margin-left: 0;
+  }
+  .header-profile {
+    justify-content: space-between;
+  }
+}
+@media (max-width: 480px) {
+  .recipes-grid-profile {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+  .header-profile {
+    justify-content: center;
+  }
+  #nameUser{
+    text-align: center;
+    font-size: 1.5rem;
+  }
 }

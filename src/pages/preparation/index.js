@@ -1,7 +1,8 @@
 import { getProgress } from "../../services/ingredientService.js";
 import { getSession } from "../../services/auth.js";
 import { completeRecipe } from "../../services/preparationService.js";
-import { showMessage } from '../../services/utils.js';
+import { showMessage } from "../../services/utils.js";
+import { navigate } from "../../router.js"
 
 export async function initPreparationPage() {
   const session = getSession();
@@ -62,19 +63,21 @@ export async function initPreparationPage() {
           const recipeContainer = document.querySelector(".principal");
           if (recipeContainer) {
             showMessage({
-                text: "Recipe completed! 🎉",
-                className: "alert-message",
-                parent: recipeContainer, 
-                duration: 4000,
-                color: "#4CAF50"
+              text: "Recipe completed! 🎉",
+              className: "alert-message",
+              parent: recipeContainer,
+              duration: 2000,
+              color: "#4CAF50",
             });
-          }
+          } 
+          setTimeout(() => {
+            navigate("/profile"); 
+          }, 1000);
         }
       } catch (err) {
         console.error("Error completing recipe:", err);
       }
     });
-
   } catch (err) {
     console.error("Error loading preparation steps:", err);
   }

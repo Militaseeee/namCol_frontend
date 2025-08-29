@@ -189,7 +189,21 @@ function initFilters() {
  * This function is exported and called by the router
  */
 export async function initRecipesPage() {
-    await initData();
-    await showa_recipes();
-    initFilters();
+  await initData();
+  
+  const storedTerm = localStorage.getItem("searchTerm");
+  if (storedTerm) {
+    const searchInput = document.getElementById("search-input");
+    if (searchInput) {
+      searchInput.value = storedTerm; 
+    }
+
+    await showa_recipes(undefined, storedTerm); 
+
+    localStorage.removeItem("searchTerm");
+  } else {
+    await showa_recipes(); 
+  }
+
+  initFilters();
 }

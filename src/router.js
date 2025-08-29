@@ -1,4 +1,5 @@
 import { getSession, isAuthenticated } from "./services/auth.js";
+import { showMessage } from './services/utils.js';
 
 const routes = {
   "/": "./src/pages/home/index.html",
@@ -37,17 +38,13 @@ export async function navigate(pathname) {
     setTimeout(() => {
       const loginSection = document.querySelector(".login");
       if (loginSection) {
-        // Create the notice
-        const msg = document.createElement("div");
-        msg.className = "login-alert";
-        msg.innerText = "You must log in to access this page.";
-
-        // Insert before the form
-        loginSection.insertBefore(msg, loginSection.firstChild);
-
-        setTimeout(() => {
-          msg.remove();
-        }, 4000);
+        showMessage({ 
+          text: "You must log in to access this page.",
+          className: "alert-message",
+          parent: loginSection,
+          color: "#FE6A6D",
+          duration: 4000
+        });
       }
     }, 50);
     return;
@@ -61,18 +58,13 @@ export async function navigate(pathname) {
     // Redirects to the list of ingredients
     navigate("/listingredients");
 
-    // We display a floating notice that disappears on its own
-    const msg = document.createElement("div");
-    msg.className = "toast-message";
-    msg.innerText =
-      "You must complete all the ingredients before continuing with the preparation.";
-
-    document.body.appendChild(msg);
-
-    // Automatically removes in 4 seconds
-    setTimeout(() => {
-      msg.remove();
-    }, 4000);
+    showMessage({
+      text: "You must complete all the ingredients before continuing with the preparation.",
+      className: "toast-message",
+      parent: document.body,
+      duration: 4000,
+      color: "#FE6A6D" 
+    });
 
     return;
   }
@@ -169,6 +161,12 @@ export async function navigate(pathname) {
       module.initRegister();
     });
   }
+
+  if (pathname === "/preparation") {
+  import("./pages/preparation/index.js").then((module) => {
+    module.initPreparationPage();
+  });
+}
 }
 
 // Support for clicks on links with data-links

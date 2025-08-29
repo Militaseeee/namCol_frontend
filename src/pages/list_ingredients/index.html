@@ -1,12 +1,16 @@
 <div class="recipe-container">
-    <section class="container-left"> 
+
+    <!-- Loader -->
+    <div id="loader" class="loader"></div>
+
+    <section id="recipeContent" class="container-left" style="display: none;"> 
         <h3 id="recipeName"></h3>
         <img id="recipeImage" src="" alt="Recipe Image">
         <p class="recipe-paragraph" id="recipeDescription"></p>
         <button class="btn-cook" id="letsCook">LET’S COOK!</button>
     </section>
 
-    <section class="container-right">
+    <section id="ingredientsSection" class="container-right" style="display: none;">
         <div class="ingredients-header">
             <div>
                 <h3>Ingredients</h3>

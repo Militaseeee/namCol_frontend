@@ -1,2 +1,2 @@
 // Base API URL
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://nam-col-backend.vercel.app';

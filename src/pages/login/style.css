@@ -6,7 +6,9 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    flex-direction: column;
     margin-top: 3rem;
+    padding: 0 2rem;
 }
 
 .card-login {

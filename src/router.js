@@ -1,4 +1,5 @@
 import { getSession, isAuthenticated } from "./services/auth.js";
+import { showMessage } from './services/utils.js';
 
 const routes = {
   "/": "./src/pages/home/index.html",
@@ -6,37 +7,69 @@ const routes = {
   "/signin": "./src/pages/login/index.html",
   "/signup": "./src/pages/sign_up/index.html",
   "/profile": "./src/pages/profile/index.html",
-  "/forgot-password":"./src/pages/login/formFP.html",
-  "/reset-password":"./src/pages/login/formRP.html",
+  "/forgot-password": "./src/pages/login/formFP.html",
+  "/reset-password": "./src/pages/login/formRP.html",
   "/listingredients": "./src/pages/list_ingredients/index.html",
+  "/restaurants": "./src/pages/restaurants/index.html",
+  "/contact": "./src/pages/contact/index.html",
+  "/about": "./src/pages/about/index.html",
+  "/preparation": "./src/pages/preparation/index.html",
 };
 
 export async function navigate(pathname) {
   const route = routes[pathname];
+  const navbar = document.querySelector(".navbar");
   if (!route) {
-    document.getElementById("content").innerHTML = '<h1 class="no-found">404 - Page Not Found</h1>';
+    document.getElementById("content").innerHTML =
+      '<h1 class="no-found">404 - Page Not Found</h1>';
     return;
   }
 
   const session = getSession();
 
-   // Protected routes
-  const protectedRoutes = ["/listingredients"];
+  // Protected routes
+  const protectedRoutes = ["/listingredients", "/preparation"];
 
   if (protectedRoutes.includes(pathname) && !session) {
-    // alert("You must log in to access this page.");
-    document.getElementById("content").innerHTML = `
-    <h1 class="no-found">401 - Access denied</h1>
-    <p class="no-found">You must log in to access this page.</p>
-  `;
-    setTimeout(() => {
-      navigate("/signin");
-    }, 3000);
+    // Redirects directly to login
+    navigate("/signin");
 
-  return;
+    // We wait for the login content to load
+    setTimeout(() => {
+      const loginSection = document.querySelector(".login");
+      if (loginSection) {
+        showMessage({ 
+          text: "You must log in to access this page.",
+          className: "alert-message",
+          parent: loginSection,
+          color: "#FE6A6D",
+          duration: 4000
+        });
+      }
+    }, 50);
+    return;
   }
 
-  const html = await fetch(route).then(res => res.text());
+  // Blockage due to incomplete ingredients
+  if (
+    pathname === "/preparation" &&
+    localStorage.getItem("canGoToPreparation") !== "true"
+  ) {
+    // Redirects to the list of ingredients
+    navigate("/listingredients");
+
+    showMessage({
+      text: "You must complete all the ingredients before continuing with the preparation.",
+      className: "toast-message",
+      parent: document.body,
+      duration: 4000,
+      color: "#FE6A6D" 
+    });
+
+    return;
+  }
+
+  const html = await fetch(route).then((res) => res.text());
   document.getElementById("content").innerHTML = html;
 
   const token = new URLSearchParams(window.location.search).get("token");
@@ -45,54 +78,95 @@ export async function navigate(pathname) {
 
   if (session) {
     isAuthenticated();
-    if(pathname === "/signin" || pathname === "/signup") {
+    if (pathname === "/signin" || pathname === "/signup") {
       navigate("/");
     }
   }
+  // short waves svg
+  const existingSvg = document.querySelector(".short-waves");
+  if (existingSvg) existingSvg.remove();
 
+  if (pathname === "/recipes" || pathname === "/listingredients" || pathname == "/restaurants" || pathname == "/preparation") {
+    const svgImg = document.createElement("img");
+    svgImg.draggable ="false"
+    svgImg.src = "./src/assets/Waves-short.svg"; 
+    svgImg.alt = "short waves";
+    svgImg.classList.add("short-waves");
+
+    navbar.appendChild( svgImg);
+  }
+
+  if (pathname === "/") {
+  import("./pages/home/index.js").then(module => {
+    module.initHomePage();
+  });
+}
+
+  if (!session){
+    if (pathname === "/profile") {
+      navigate("/signin");
+    }
+  }
+  
   if (pathname === "/listingredients") {
-    import("./pages/list_ingredients/index.js").then(module => {
-      module.initIngredientsPage(); 
+    import("./pages/list_ingredients/index.js").then((module) => {
+      module.initIngredientsPage();
     });
   }
 
   if (pathname === "/recipes") {
-    import("./pages/recipes/index.js").then(module => {
+    import("./pages/recipes/index.js").then((module) => {
       module.initRecipesPage();
     });
   }
+  
+  if (pathname === "/contact") {
+    import("./pages/contact/index.js");
+  }
+
+  if (pathname === "/about") {
+    import("./pages/about/index.js").then(module => {
+      module.initAbout();
+    });
+  }
+  
   if (pathname === "/signin") {
-  import("./pages/login/index.js").then(module => {
-    module.initLogin();
-  });
-}
+    import("./pages/login/index.js").then((module) => {
+      module.initLogin();
+    });
+  }
 
   if (pathname === "/profile") {
-  import("./pages/profile/index.js").then(module => {
-    module.initProfile();
-    module.logOut();
-    module.deleteAccount();});
-}
+    import("./pages/profile/index.js").then((module) => {
+      module.initProfile();
+      module.logOut();
+      module.deleteAccount();
+    });
+  }
 
   if (pathname === "/forgot-password") {
-  import("./pages/login/index.js").then(module => {
-    module.initForgotPassword();
-  });
-}
+    import("./pages/login/index.js").then((module) => {
+      module.initForgotPassword();
+    });
+  }
 
   if (pathname === "/reset-password") {
-    console.log("reset-password page loaded");
-  import("./pages/login/index.js").then(module => {
-    module.initResetPassword(token);
-  });
-}
+    import("./pages/login/index.js").then((module) => {
+      module.initResetPassword(token);
+    });
+  }
 
   if (pathname === "/signup") {
-  import("./pages/sign_up/index.js").then(module => {
-    module.initRegister();
+    import("./pages/sign_up/index.js").then((module) => {
+      module.initRegister();
+    });
+  }
+
+  if (pathname === "/preparation") {
+  import("./pages/preparation/index.js").then((module) => {
+    module.initPreparationPage();
   });
 }
-  
 }
 
 // Support for clicks on links with data-links

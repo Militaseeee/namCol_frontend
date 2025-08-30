@@ -151,3 +151,10 @@ This project was built with:
 - **Vite** → Development environment and build tool for fast and optimized frontend.  
 - **SPA (Single Page Application)** → Navigation and routing handled on the client-side with `router.js`.  
 
+## 🤙 Application Developers 
+
+- **Cristian Alejandro Penagos Suárez** 
+- **Camila Acosta Velásquez** 
+- **Juan Pablo Jiménez Cardona** 
+- **Daniela Macías Morales** 
+- **Miguel Ángel Cuadros Gallego** 

@@ -5,6 +5,15 @@ import { showMessage } from "../../services/utils.js";
 import { navigate } from "../../router.js"
 
 export async function initPreparationPage() {
+  const loader = document.getElementById("loader");
+  const recipeContent = document.getElementById("recipeContent");
+  const ingredientsSection = document.getElementById("ingredientsSection");
+
+  // we show input loader
+  loader.style.display = "flex";
+  recipeContent.style.display = "none";
+  ingredientsSection.style.display = "none";
+
   const session = getSession();
   if (!session) {
     console.error("No user session found");
@@ -14,6 +23,7 @@ export async function initPreparationPage() {
   const savedRecipe = localStorage.getItem("selectedRecipe");
   if (!savedRecipe) {
     console.error("No recipe selected");
+    loader.style.display = "none";
     return;
   }
 
@@ -78,7 +88,14 @@ export async function initPreparationPage() {
         console.error("Error completing recipe:", err);
       }
     });
+
+    // We hide the loader and show the content when everything is ready.
+    loader.style.display = "none";
+    recipeContent.style.display = "block";
+    ingredientsSection.style.display = "block";
+
   } catch (err) {
     console.error("Error loading preparation steps:", err);
+    loader.style.display = "none"; // We hide the loader when an error is found.
   }
 }

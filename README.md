@@ -151,6 +151,15 @@ This project was built with:
 - **Vite** → Development environment and build tool for fast and optimized frontend.  
 - **SPA (Single Page Application)** → Navigation and routing handled on the client-side with `router.js`.  
 
+---
+
+🌐 Deployment
+
+The NamCol frontend is deployed on Vercel, allowing users to access the application directly from the browser without needing to install anything locally.  
+Deployment link: [https://namcol.vercel.app](https://nam-col-frontend.vercel.app)
+
+---
+
 ## 🤙 Application Developers 
 
 - **Cristian Alejandro Penagos Suárez** 

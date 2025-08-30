@@ -95,7 +95,7 @@ export async function navigate(pathname) {
   ) {
     const svgImg = document.createElement("img");
     svgImg.draggable = "false";
-    svgImg.src = "./src/assets/Waves-short.svg";
+    svgImg.src = "./assets/Waves-short.svg";
     svgImg.alt = "short waves";
     svgImg.classList.add("short-waves");
 

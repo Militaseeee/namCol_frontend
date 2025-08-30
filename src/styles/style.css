@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /* Reset básico */
 * {
@@ -15,7 +15,8 @@ body {
   color: #333;
   line-height: 1.5;
 }
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -25,15 +26,14 @@ html, body {
   flex-direction: column;
 }
 /* ---------------- NAVBAR ---------------- */
-.navbar-wrapper{
+.navbar-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 3rem;
-  background-color: #FFC042;
-  flex-wrap: wrap; 
+  background-color: #ffc042;
+  flex-wrap: wrap;
 }
-
 
 .navbar .logo {
   font-size: 1.8rem;
@@ -50,7 +50,7 @@ html, body {
   border: none;
   margin: 0.3rem;
   cursor: pointer;
-  padding: 0.5rem 1rem; 
+  padding: 0.5rem 1rem;
   font-weight: bold;
 }
 
@@ -70,18 +70,18 @@ html, body {
 }
 
 .navbar nav a:hover {
-  transform:  scale(1.05) ;
+  transform: scale(1.05);
 }
 
 .short-waves {
   position: sticky;
-  top: 70px; 
+  top: 70px;
   z-index: 999;
   display: block;
-  margin: 0 auto;  
-  width: 100%;      
+  margin: 0 auto;
+  width: 100%;
   height: auto;
-  pointer-events: none; 
+  pointer-events: none;
 }
 /* ---------------- HERO ---------------- */
 .hero {
@@ -89,11 +89,10 @@ html, body {
   justify-content: flex-end;
   align-items: center;
   padding: 4rem 3rem;
-  background-color: #FFC042; 
+  background-color: #ffc042;
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 
 .hero-text {
   max-width: 50%;
@@ -106,7 +105,7 @@ html, body {
   color: #000;
 }
 #black-logo {
-  max-width: 500px; 
+  max-width: 500px;
   width: 100%;
   height: auto;
 }
@@ -137,7 +136,6 @@ html, body {
   cursor: pointer;
 }
 
-
 .hero-img img {
   width: 100%;
   max-width: 500px;
@@ -156,7 +154,6 @@ html, body {
   margin-bottom: 2rem;
 }
 
-
 .recipe-cards {
   display: flex;
   justify-content: center;
@@ -168,7 +165,7 @@ html, body {
 .card {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   width: 250px;
   /* max-width: 45%; */
@@ -203,7 +200,7 @@ html, body {
   margin-bottom: 3rem;
   margin-left: 2rem;
 }
-.btn-more a{
+.btn-more a {
   color: black;
   text-decoration: none;
 }
@@ -211,35 +208,34 @@ html, body {
   background: #e8a929 !important;
 }
 
-
 .benefits {
   display: flex;
-  justify-content: space-between; 
-  align-items: flex-start;         
-  gap: 2rem;                       
-  max-width: 1100px;               
-  margin: 0 auto;                  
-  padding: 3rem 1rem;              
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
 }
-.benefits div{
-  flex: 1 1 30%;                   
+.benefits div {
+  /* flex: 1 1 30%; */
   display: flex;
-  flex-direction: column;          
-  align-items: center;             
-  text-align: center;            
-  gap: 0.75rem;                    
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
 }
-.benefits div img{
+.benefits div img {
   max-width: 100px;
 }
-.benefits div p{
+.benefits div p {
   font-weight: 800;
   max-width: 280px;
 }
 
 /* ---------------- FOOTER ---------------- */
 .footer {
-  background-color: #FFC042;
+  background-color: #ffc042;
   border-top: 1px solid #ddd;
   padding: 4.5rem 3rem;
   margin-top: 3rem;
@@ -254,34 +250,33 @@ html, body {
 
 .footer p {
   font-size: 0.9rem;
-  color: #3F3F3F;
+  color: #3f3f3f;
 }
-.footer-nav{
-    display: flex;
-    
+.footer-nav {
+  display: flex;
 }
 .footer-nav a {
   margin-left: 1.5rem;
   text-decoration: none;
-  color: #3F3F3F;
+  color: #3f3f3f;
   font-weight: bold;
 }
 
 .footer-nav a:hover {
   color: #ff9800;
 }
-.footer-logos-container{
-    height: 5vh;
-    display: flex;
-    justify-content: center;
+.footer-logos-container {
+  height: 5vh;
+  display: flex;
+  justify-content: center;
 }
-.footer-logos{
-    width: 5vh;
-    height: 5vh;
-    color: #3F3F3F;
+.footer-logos {
+  width: 5vh;
+  height: 5vh;
+  color: #3f3f3f;
 }
 
-.footer-links{
+.footer-links {
   margin-top: 1%;
   margin-left: 2%;
 }
@@ -290,17 +285,19 @@ html, body {
   text-align: center;
   padding-top: 2rem;
 }
-.navbar, footer, .short-waves{
+.navbar,
+footer,
+.short-waves {
   -webkit-user-select: none;
-  -moz-user-select: none;   
-  -ms-user-select: none;    
-  user-select: none;         
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /*Responsive*/
 /* Tablet  */
 @media (max-width: 1024px) {
-  .search-box{
+  .search-box {
     max-width: 350px;
   }
   .hero {
@@ -317,10 +314,10 @@ html, body {
     max-width: 220px;
   }
   h1 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* phones */
@@ -338,7 +335,7 @@ html, body {
     justify-content: center;
     margin-top: 0.5rem;
   }
-  .navbar-wrapper{
+  .navbar-wrapper {
     justify-content: center;
   }
   .hero {
@@ -370,21 +367,20 @@ html, body {
     max-width: 60%;
     margin: 0.75rem auto 0;
   }
-  .footer-container{
+  .footer-container {
     margin-bottom: 2rem;
   }
-  .benefits{
+  .benefits {
     flex-wrap: wrap;
   }
-
 }
 
 /* small phones */
 @media (max-width: 480px) {
-  .search-box{
+  .search-box {
     max-width: 80%;
   }
-  .search-box input{
+  .search-box input {
     width: 80%;
   }
   .nav-button {
@@ -397,26 +393,47 @@ html, body {
   .card img {
     height: 120px;
   }
-  .benefits{
+  .benefits {
     justify-content: center;
   }
-  .benefits div img{
+  .benefits div img {
     max-width: 60px;
   }
-  .recipe-cards{
+  .recipe-cards {
     gap: 5rem;
     margin-bottom: 4rem;
   }
-  
+
   .footer-logos-container {
     gap: 1rem;
   }
-  .footer-nav{
+  .footer-nav {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
   }
-  .footer-nav a{
+  .footer-nav a {
     margin-left: 0;
   }
+  .btn-more {
+    margin-left: 0;
+  }
+}
+
+a,
+a:visited,
+a:active {
+  color: inherit !important;
+  text-decoration: none !important;
+  -webkit-touch-callout: none;
+}
+
+button,
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: inherit !important;
 }
